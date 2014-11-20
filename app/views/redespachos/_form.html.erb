@@ -101,9 +101,9 @@
 			<div class="form-group">
 				<%= r.label :jadlog_lista_numero, 'JadLog Número da lista', :class => "col-sm-1 control-label"%>
 				<div class="col-sm-2">
-					<div class="input-group">
-						<span class="input-group-addon">R$</span>
-						<%= r.text_field :jadlog_lista_numero, :class =>"form-control currency" %>
+					<div>
+						
+						<%= r.text_field :jadlog_lista_numero, :class =>"form-control" %>
 					</div>
 				</div>
 				<%= r.label :jadlog_conhecimento_numero, 'JadLog Número de conhecimento', :class => "col-sm-1 control-label"%>
@@ -121,13 +121,13 @@
 		  	<div class="form-group">
 				<%= r.label :data_envio, 'Data de envio', :class => "col-sm-1 control-label"%>
 				<div class="col-sm-2">
-					<%= r.text_field :data_envio, :class =>"form-control datepicker", :data => { :'date-format'=> "dd/mm/yyyy" }%>
+					<%= r.text_field :data_envio, :class =>"form-control datepicker Disabled", :disabled => true %>
 				</div>
 			</div>
 			<div class="form-group">
 				<%= r.label :data_entrega, 'Data de entrega', :class => "col-sm-1 control-label"%>
 				<div class="col-sm-2">
-					<%= r.text_field :data_entrega, :class =>"form-control datepicker", :data => { :'date-format' => "dd/mm/yyyy"} %>
+					<%= r.text_field :data_entrega, :class =>"form-control datepicker Disabled", :disabled => true %>
 				</div>
 				<%= r.label :recebido_por, 'Recebido por', :class => "col-sm-1 control-label"%>
 				<div class="col-sm-2">

@@ -24,16 +24,22 @@ class RedespachosController < ApplicationController
   end
   
   def create
-    
-    @redespacho = Redespacho.new(redespacho_params)
-    
-    respond_to do |format|
-      if @redespacho.save
-        format.html {redirect_to redespachos_path, notice: 'Redespacho salvo com sucesso!'}
-      else
-        format.html {redirect_to redespachos_path, notice: 'Nem todos os campos foram preenchidos!'}
+    #begin
+      @redespacho = Redespacho.new(redespacho_params)
+      
+      respond_to do |format|
+        if @redespacho.save
+          format.html {redirect_to redespachos_path, notice: 'Redespacho salvo com sucesso!'}
+        else
+          format.html {redirect_to redespachos_path, notice: 'Nem todos os campos foram preenchidos!'}
+        end
       end
-    end
+    #rescue
+      #respond_to do |format|
+      #  format.html {redirect_to redespachos_path, notice: 'Um erro aconteceu :( '}
+      #end
+    #end
+    
   end
   
   def carrega_lista
@@ -43,6 +49,6 @@ class RedespachosController < ApplicationController
   def redespacho_params
     params.require(:redespacho).permit(:remetente,:destinatario, :destinatario_cidade, :valor_redespacho,
     :valor_comissao, :valor_liquido, :valor_frete, :volume, :peso, :nf_valor, :nf_numero, 
-    :data_envio, :data_entrega, :recebido_por)
+    :data_envio, :data_entrega, :recebido_por, :jadlog_lista_numero, :jadlog_conhecimento_numero)
   end
 end
