@@ -26,7 +26,7 @@ module ControleCargas
       Devise::SessionsController.layout "log_in"
     end
     
-    config.assets.enabled = true
-    config.assets.initialize_on_precompile = true
+    #config.assets.enabled = true
+    #config.assets.initialize_on_precompile = true
   end
 end

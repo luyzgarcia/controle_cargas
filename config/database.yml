@@ -80,6 +80,11 @@ test:
 #
 production:
   <<: *default
-  database: controle_cargas_production
-  username: controle_cargas
-  password: <%= ENV['CONTROLE_CARGAS_DATABASE_PASSWORD'] %>
+  database: d7f13luq7i90ds
+  username: anyfzgvxspwvfe
+  password: 7XtJrMMvLJQRWJfDsmegNTS_q7
+  port: 5432
+  host: ec2-54-243-245-159.compute-1.amazonaws.com
+  
+  
+  
