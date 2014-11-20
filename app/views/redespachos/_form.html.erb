@@ -1,0 +1,141 @@
+<div class="">
+	<h2>Novo Redespacho</h2>
+	<%= form_for(@redespacho, :html => { :role => "form", :class =>"form-horizontal div_2048"}) do |r| %>
+		
+		<div class="form-wrapper-group">
+			<p>Rementente</p>
+			<div class="form-group">
+				<%= r.label :remetente, 'Remetente', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+				<%= r.text_field :remetente, :class =>"form-control" %>
+				</div>
+		  	</div>
+	  	</div>
+	  	<div class="form-wrapper-group">
+			<p>Destinatario</p>
+		  	<div class="form-group">
+				<%= r.label :destinatario, 'Destinatario', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+				<%= r.text_field :destinatario, :class =>"form-control" %>
+				</div>
+				
+				<%= r.label :destinatario_cidade, 'Cidade', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+				<%= r.text_field :destinatario_cidade, :class =>"form-control" %>
+				</div>
+				
+		  	</div>
+		</div>
+		
+		<div class="form-wrapper-group">
+			<p>Financeiro</p>
+		  	<div class="form-group">
+				<%= r.label :valor_redespacho, 'Valor redespacho', :class => "col-sm-1 control-label "%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<span class="input-group-addon">R$</span>
+						<%= r.text_field :valor_redespacho, :class =>"form-control currency" %>
+					</div>
+				</div>
+				
+				<%= r.label :valor_comissao, 'Valor comissão', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<span class="input-group-addon">R$</span>
+						<%= r.text_field :valor_comissao, :class =>"form-control currency" %>
+					</div>
+				</div>
+		  	</div>
+		  	<div class="form-group">
+				<%= r.label :valor_liquido, 'Valor liquido', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<span class="input-group-addon">R$</span>
+						<%= r.text_field :valor_liquido, :class =>"form-control currency" %>
+					</div>
+				</div>
+				
+				<%= r.label :valor_frete, 'Valor frete', :class => "col-sm-1 control-label "%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<span class="input-group-addon">R$</span>
+						<%= r.text_field :valor_frete, :class =>"form-control currency" %>
+					</div>
+				</div>
+		  	</div>
+		</div>
+		
+		<div class="form-wrapper-group">
+			<p>Outras informções</p>
+		  	<div class="form-group">
+				<%= r.label :volume, 'Volume', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<%= r.text_field :volume, :class =>"form-control currency" %>
+						<span class="input-group-addon">Un.</span>
+					</div>
+				</div>
+				<%= r.label :peso, 'Peso', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<%= r.text_field :peso, :class =>"form-control currency" %>
+						<span class="input-group-addon">Kg.</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= r.label :nf_valor, 'Valor da NF', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<span class="input-group-addon">R$</span>
+						<%= r.text_field :nf_valor, :class =>"form-control currency" %>
+					</div>
+				</div>
+				<%= r.label :nf_numero, 'Numero da NF', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<div class="">
+						<%= r.text_field :nf_numero, :class =>"form-control" %>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= r.label :jadlog_lista_numero, 'JadLog Número da lista', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<span class="input-group-addon">R$</span>
+						<%= r.text_field :jadlog_lista_numero, :class =>"form-control currency" %>
+					</div>
+				</div>
+				<%= r.label :jadlog_conhecimento_numero, 'JadLog Número de conhecimento', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<div class="">
+						<%= r.text_field :jadlog_conhecimento_numero, :class =>"form-control" %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="form-wrapper-group">
+			<p>Datas</p>
+		  	<div class="form-group">
+				<%= r.label :data_envio, 'Data de envio', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<%= r.text_field :data_envio, :class =>"form-control datepicker", :data => { :'date-format'=> "dd/mm/yyyy" }%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= r.label :data_entrega, 'Data de entrega', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<%= r.text_field :data_entrega, :class =>"form-control datepicker", :data => { :'date-format' => "dd/mm/yyyy"} %>
+				</div>
+				<%= r.label :recebido_por, 'Recebido por', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+					<%= r.text_field :recebido_por, :class =>"form-control" %>
+				</div>
+			</div>
+		</div>
+		
+		<%= r.submit 'Salvar', :class => "btn btn-default" %>
+	<% end %>
+</div>

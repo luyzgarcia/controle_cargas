@@ -1,0 +1,348 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import '_botoes.scss';
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  //background: #dcdddf;
+  height: 100%;
+  margin: 55px 0 0;
+}
+
+
+header {
+  //text-align: right;
+  position: fixed;
+  width: 100%;
+  margin: -55px 0 0;
+  z-index: 99999;
+  padding: 5px 0px;
+  background: -webkit-linear-gradient(top, #8cc53e, #75ae27);
+  background: -linear-gradient(top, #8cc53e, #75ae27);
+  background: -moz-linear-gradient(top, #8cc53e, #75ae27);
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
+  div {
+    display: inline-block;
+  }
+  .esquerda {
+    margin-left: 20px;
+  
+    img {
+      width: 90px;
+      margin: -6px 0;
+      display: inline-block;
+    }
+    .titulo {
+      //float:left;
+      font: normal 10pt 'nexa_bold', Tahoma;
+      color: #004961;
+      display: inline-block;
+      margin: 15px 10px;
+      line-height: 15px;
+    }
+  }
+  .direita {
+    padding: 10px 20px;
+    float: right;
+    ul {
+      display: inline-block;
+      text-align: center;
+      background: #8fd233;
+      width: 25px;
+      margin: 0 10px;
+      height: 25px;
+      padding: 0;
+      border-radius: 5px;
+      vertical-align: middle;
+      cursor: pointer;
+      div {
+        display: none;
+      }
+    } 
+    ul:hover {
+      background: #004961;
+    }
+    ul > div {
+      background: #fff;
+      top: 55px;
+      position: absolute;
+      right: 47px;
+      text-align: left;
+      padding: 2px 5px 5px;
+      border: 1px solid #d1d3d4;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      li {
+        //background: #fff;
+        list-style: none;
+        padding: 8px 20px;
+        //padding: 5px 20px;
+      }
+      li:hover {
+        background: #f1f2f2;
+      }
+      li:not(:last-child) {
+        border-bottom: 1px solid #dcdddf;
+      }
+    }
+    ul > div:after {
+      content: url(/assets/seta_up_menu.png) no-repeat 90% 0%;
+      position: absolute;
+      top: -14px;
+      right: 15px;
+    }
+    a {
+      font: normal 10pt 'nexa_bold', Tahoma;
+      color: #004961;
+      text-decoration: none;
+    }
+  }
+}
+
+#painel_esquerdo {
+  position: absolute;
+  background: #e6e7e8;
+  width: 215px;
+  height: 100%;
+  float: left;
+  .info_user {
+    margin: 35px 35px;
+    span {
+      display: block;
+      text-align: left;
+    }
+    .img_avatar {
+      background: #fff;
+      border: 1px solid #dedfe1;
+      text-align: center;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 15px;
+      img {
+        width: 100%;
+      }
+    }
+    .user_name {
+      font: normal 16pt/1.5em nexa_bold, Tahoma;
+      color: #004961;
+      word-wrap: break-word;
+
+    }
+    .user_perfil {
+      font: normal 10pt/1.5em droid_serif;
+      color: #58595b;
+      text-transform: capitalize;
+    }
+    .ultima_visita {
+      color: #004961;
+      font: normal 8pt/1.5em droid_serif;
+    }
+  }
+  .menu {
+    ul {
+      padding: 0;
+      li{
+        list-style: none;
+        margin-bottom: 1px;
+        padding: 0;
+        background: #fff;
+        a {
+          font: normal 12pt/1em nexa_bold, Tahoma;
+          color: #004961;
+          text-decoration: none;
+          word-break: break-word;
+          display: block;
+          padding: 15px 15px;
+        }
+      }
+      li:hover, li.ativo {
+        background: #dcdddf;
+      }
+    }
+  }
+}
+
+
+#painel_conteudo {
+ // background: #dcdddf;
+  height: 100%;
+  float: left;
+  display: inline-block;
+  margin-left: 240px;
+  width: auto;
+/************************************************************************/
+/*********************************JANELAS*******************************/
+/************************************************************************/
+  .janela {
+    width: 470px;
+    margin: 10px 0 0 10px;
+    border: 1px solid #d1d3d4;
+    box-shadow: 1px 0 1px 1px #d6d7d9;
+    background-color: #f1f2f2;
+    float: left;
+    .titulo_janela {
+      position: relative;
+      margin-top: 10px;
+      border-bottom: 1px solid #e7eaec;
+      padding-bottom: 10px;
+      .titulo_bt_func {
+        display: inline-block;
+        right: 10px;
+        position: absolute;
+        span {
+          cursor: pointer;
+          width: 19px;
+          height: 19px;
+          display: block;
+          float:left;
+          margin-left: 2px;
+        }
+        .btn_minimizar {
+          background: url(/assets/botoes_min.png) -22px 19px;
+        }
+        .btn_fechar {
+          background: url(/assets/botoes_min.png) 0px 19px;
+        }
+        .btn_atualizar {
+          background: url(/assets/botoes_min.png) 0px 19px;
+        }
+      }
+    }
+    .tabela {
+      overflow-y: auto;
+    }
+    .titulo_janela > {
+      span {
+        font: normal 12pt/1.3em "nexa_bold", Times;
+        color: #8dc63f;
+      }
+      span:before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        margin: 0px 5px 0 10px;
+        color: #e1e1e1;
+        background: #e1e1e1;
+        top: 3px;
+        display: inline-block;
+        border-radius: 50%;
+        position: relative;
+
+      }
+    }
+    table {
+      width: 100%;
+      text-align: left;
+      border-spacing: 0;
+      th {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      td{
+        padding-top: 13px;
+        padding-bottom: 15px;
+        
+      }
+      thead {
+        th {
+          background: #e6e7e8;
+          font: normal 10pt/1.3em "nexa_bold", Times;
+          color: #004961;
+        }
+      }
+      tbody{
+        tr:not(:first-child){
+          td{
+            border-top: 1px solid #c7c8ca;
+          }
+        }
+        tr:not(:last-child) {
+          td{
+           border-bottom: 1px solid #e6e8e8;
+          }
+        }
+        td {
+          font: normal 9pt Verdana, Tahoma;
+          color: #58595b;
+          text-transform: capitalize; 
+          word-break: break-word;
+          padding-right: 15px;
+          vertical-align: top;
+        }
+        td:first-child:before {
+          top: 20px;
+        }
+        
+      }      
+      
+      th:first-child, td:first-child {
+          padding-left: 30px;
+          position:relative;
+      }
+      th:first-child:before, td:first-child:before {
+        content: '';
+        width: 4px;
+        height: 4px;
+        background: #9d9d9d;
+        display: block;
+        position: absolute;
+        left: 10px;
+        top: 15px;
+        vertical-align: middle;
+        border-radius: 25px;
+      }
+      
+    }
+    
+    
+    
+    /****************************************************************
+     * ***********************Boteos no canto da jenal******************
+     *****************************************************************/
+    .btn_baixar a {
+      background: url(/assets/botoes_min.png) no-repeat -41px 0px;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      display: block;
+      float:left;
+    }
+    /****************************************************************
+     * ******************FIM Boteos no canto da jenal******************
+     *****************************************************************/
+  }
+
+
+/************************************************************************/
+/***************************FIM    JANELAS*******************************/
+/************************************************************************/
+}
+
+/************************************************************************/
+/***************************Mensagens de erros***************************/
+/************************************************************************/
+span.erro_message {
+  font: normal 9pt Verdana, Tahoma;
+  color: red; 
+}
+
+/************************************************************************/
+/***************************FIM mensagens de erros***********************/
+/************************************************************************/
+

@@ -1,0 +1,17 @@
+// Place all the styles related to the redespacho controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#registros_table > tbody > tr {
+  cursor: pointer;
+}
+
+.table_2600 {
+  width: 2800px;
+} 
+
+.div_2048 {
+  width: 2048px;
+}
+#ui-datepicker-div {
+  z-index: 9 !important;
+}

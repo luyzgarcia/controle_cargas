@@ -1,0 +1,43 @@
+<div class="table-responsive">
+	<%= grid(@registros) do |g|
+		g.column name: 'Ações' do |option|
+			buffer =  link_to('Editar', edit_redespacho_path(option)) + ' | '
+			buffer += link_to('Excluir', redespacho_path(option), method: :delete, data: {confirm: 'Você tem certeza?'})
+			raw buffer
+		end
+		
+		g.column name: 'Código', attribute: 'id'
+		g.column name: 'Remetente', attribute: 'remetente'
+		g.column name: 'Destinatario', attribute: 'destinatario'
+		g.column name: 'Destinatario Cidade', attribute: 'destinatario_cidade'
+		g.column name: 'Valor Redespacho', attribute: 'valor_redespacho'do |registro| 
+		 'R$' + registro.valor_redespacho.to_s
+		end
+		g.column name: 'Valor Comissão', attribute: 'valor_comissao'do |registro| 
+		 'R$' + registro.valor_comissao.to_s
+		end
+		g.column name: 'Valor Liquido', attribute: 'valor_liquido' do |registro| 
+		 'R$' + registro.valor_liquido.to_s
+		end
+		
+		g.column name: 'Valor do frete', attribute: 'valor_frete' do |registro| 
+		 'R$' + registro.valor_frete.to_s
+		end
+		
+		g.column name: 'Quantidade (Volume)', attribute: 'volume'
+		g.column name: 'Peso', attribute: 'peso'
+		#g.column name: 'Fornecedor', attribute: ''
+		g.column name: 'NF Valor', attribute: 'nf_valor'
+		g.column name: 'NF Número', attribute: 'nf_numero'
+		g.column name: 'Data de envio', attribute: 'data_envio'
+		g.column name: 'Data de entrega', attribute: 'data_entrega'
+		g.column name: 'Recebido por', attribute: 'recebido_por'
+		g.column name: 'Jadlog Numero Lista', attribute: 'jadlog_lista_numero'
+		g.column name: 'Jadlog Número de conhecimento', attribute: 'jadlog_conhecimento_numero'
+		
+		
+		
+    end %>
+</div>
+
+<%= link_to 'Novo registro', new_redespacho_path, :class => 'btn btn-success'  %>

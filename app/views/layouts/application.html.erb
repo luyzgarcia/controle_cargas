@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Controle de cargas</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  
+</head>
+<body>
+	<header>
+		<div class="esquerda">
+		<p class="titulo">Nome do sistema</p>
+		</div>
+		<div class="direita">
+			<ul id="menu_header">
+				<div>
+					<li><%= link_to 'Meus dados', edit_user_registration_path %></li>
+				</div>
+			</ul>
+			<%= link_to 'Sair', destroy_user_session_path, :method => :delete %>
+		</div>
+	</header>
+	<div id="painel_esquerdo">
+		<div class="info_user">
+			<% if !current_user.nil? %>
+			<span class="img_avatar">
+				<%= image_tag 'fundo_branco.png' %>
+			</span>
+			<span class="user_name">
+				<%=  current_user.email  %>
+			</span>
+			<span class="user_perfil">
+				<%= %>
+			</span>
+			<span class="ultima_visita">
+				Ultima visita: <%= current_user.last_sign_in_at %>
+			</span>
+			<% end %>
+		</div>
+		<div class="menu">
+			<ul>
+				<li><%= link_to 'Redespacho', redespachos_path %></li>
+			</ul>	
+		</div>
+	</div>
+	<div id="painel_conteudo">
+		<br/>
+		<% flash.each do |name, msg| -%>
+	      <%= content_tag :div, msg, class: name %>
+	    <% end %>
+	    
+		<%= yield %>
+	</div>
+
+</body>
+</html>

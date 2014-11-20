@@ -1,0 +1,10 @@
+@mixin botao_verde_padrao_1 {
+  font: normal 12pt/1.5em 'nexa_bold', Tahoma;
+  color: #fff;
+  border: 1px solid #61941c;
+  border-radius: 7px;
+  padding: 8px 15px 6px;
+  background: -webkit-linear-gradient(top, #8cc53e, #75ae27);
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
