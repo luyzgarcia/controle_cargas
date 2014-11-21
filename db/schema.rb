@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121162000) do
+ActiveRecord::Schema.define(version: 20141121163933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20141121162000) do
     t.string   "destinatario_cidade"
     t.decimal  "valor_redespacho",           precision: 5, scale: 2, default: 0.0
     t.decimal  "valor_comissao",             precision: 5, scale: 2, default: 0.0
-    t.decimal  "valor_liquido",              precision: 5, scale: 2, default: 0.0
     t.decimal  "valor_frete",                precision: 5, scale: 2, default: 0.0
     t.integer  "volume"
     t.decimal  "peso",                       precision: 5, scale: 2, default: 0.0
