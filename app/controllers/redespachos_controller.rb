@@ -16,15 +16,14 @@ class RedespachosController < ApplicationController
   
   def edit
     @redespacho = Redespacho.find(params[:id])
-    
     respond_to do |format|
-      format.html {render 'index'}
+      format.html {render 'edit'}
     end
     #flash[:notice] = 'Não esqueça de salvar as alteçoes após a edição.'
   end
   
   def create
-    #begin
+    begin
       @redespacho = Redespacho.new(redespacho_params)
       
       respond_to do |format|
@@ -34,16 +33,31 @@ class RedespachosController < ApplicationController
           format.html {redirect_to redespachos_path, notice: 'Nem todos os campos foram preenchidos!'}
         end
       end
-    #rescue
-      #respond_to do |format|
-      #  format.html {redirect_to redespachos_path, notice: 'Um erro aconteceu :( '}
-      #end
-    #end
+    rescue
+      respond_to do |format|
+        format.html {redirect_to redespachos_path, notice: 'Um erro aconteceu :( '}
+      end
+    end
+  end
+  
+  def update
+    @redespacho = Redespacho.find(params[:id])
+    if(@redespacho.update(redespacho_params))
+      respond_to do |format|
+        format.html {redirect_to redespachos_path, notice: 'Redespacho atualizado com sucesso!'}
+      end
+    else
+      respond_to do |format|
+        render :action => 'edit'
+      end    
+    end
     
   end
   
+  private
+  
   def carrega_lista
-    @registros = initialize_grid(Redespacho, per_page: 10) 
+    @registros = initialize_grid(Redespacho, per_page: 30) 
   end
   
   def redespacho_params

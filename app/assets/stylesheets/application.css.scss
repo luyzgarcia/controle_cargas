@@ -182,10 +182,13 @@ header {
 #painel_conteudo {
  // background: #dcdddf;
   height: 100%;
+  width: 85%;
   float: left;
   display: inline-block;
-  margin-left: 240px;
-  width: auto;
+  margin-left: 240px;  
+  .table-responsive {
+    overflow-x: scroll;
+  }
 /************************************************************************/
 /*********************************JANELAS*******************************/
 /************************************************************************/
