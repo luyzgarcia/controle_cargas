@@ -14,6 +14,12 @@
 				<div class="col-sm-2">
 				<%= r.text_field :remetente_cidade, :class =>"form-control" %>
 				</div>
+		  	</div>
+		  	<div class="form-group">
+				<%= r.label :empresa_id, 'Empresa', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-3">
+				<%= r.collection_select :empresa_id ,Empresa.all, :id,:nome,{:include_blank => 'Selecione...'}, {:class => 'form-control'} %>
+				</div>
 				
 		  	</div>
 	  	</div>
@@ -52,17 +58,19 @@
 						<%= r.text_field :valor_redespacho, :class =>"form-control currency" %>
 					</div>
 				</div>
-				
 		  	</div>
+		  	
 		  	<div class="form-group">
-				<%= r.label :valor_comissao, 'Valor comissão', :class => "col-sm-1 control-label"%>
+		  		
+		  		<%= r.label :forma_pagamento, 'Forma de pagamento', :class => "col-sm-1 control-label "%>
 				<div class="col-sm-2">
 					<div class="input-group">
-						<span class="input-group-addon">R$</span>
-						<%= r.text_field :valor_comissao, :class =>"form-control currency" %>
+						<%= r.select :forma_pagamento, options_for_select([['Boleto'],['Dinheiro'],['A Vista'],['A Prazo'],['Depósito'],['Cartão de crédito'],['Cheque']]), {}, :class =>"form-control " %>
 					</div>
 				</div>
 		  	</div>
+		  	
+		  	
 		</div>
 		
 		<div class="form-wrapper-group">

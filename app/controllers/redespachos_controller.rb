@@ -57,12 +57,12 @@ class RedespachosController < ApplicationController
   private
   
   def carrega_lista
-    @registros = initialize_grid(Redespacho, per_page: 30) 
+    @registros = initialize_grid(Redespacho.order(created_at: :desc), per_page: 30)
   end
   
   def redespacho_params
     params.require(:redespacho).permit(:remetente,:destinatario, :destinatario_cidade, :valor_redespacho,
-    :valor_comissao, :valor_liquido, :valor_frete, :volume, :peso, :nf_valor, :nf_numero, 
-    :data_envio, :data_entrega, :recebido_por, :jadlog_lista_numero, :jadlog_conhecimento_numero)
+    :valor_comissao, :valor_liquido, :valor_frete, :volume, :peso, :nf_valor, :nf_numero, :forma_pagamento,
+    :data_envio, :data_entrega, :recebido_por, :jadlog_lista_numero, :jadlog_conhecimento_numero, :empresa_id)
   end
 end

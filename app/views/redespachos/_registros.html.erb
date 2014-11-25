@@ -1,5 +1,9 @@
-<div class="table-responsive table-bordered">
-	<%= grid(@registros) do |g|
+<div class="table-responsive table-bordered overflow-x">
+	<%= grid(@registros, :class => 'table_2600') do |g|
+		g.blank_slate  do
+	    	content_tag :div, "Nenhum registro encontrado", class: 'well'
+	  	end
+	  	
 		g.column name: 'Ações' do |option|
 			buffer =  link_to('Editar', edit_redespacho_path(option)) + ' | '
 			buffer += link_to('Excluir', redespacho_path(option), method: :delete, data: {confirm: 'Você tem certeza?'})
@@ -7,6 +11,9 @@
 		end
 		
 		g.column name: 'Código', attribute: 'id'
+		g.column name: 'Empresa', attribute: 'empresa_id', custom_filter: [:empresa, :to_option] do |registro|
+			registro.empresa.nome if !registro.empresa.nil?
+		end
 		g.column name: 'Remetente', attribute: 'remetente'
 		g.column name: 'Destinatario', attribute: 'destinatario'
 		g.column name: 'Destinatario Cidade', attribute: 'destinatario_cidade'
@@ -18,7 +25,8 @@
 		end
 		g.column name: 'Valor Comissão', attribute: 'valor_comissao'do |registro| 
 		 'R$' + registro.valor_comissao.to_s
-		end		
+		end	
+		g.column name: 'Forma de pagamento', attribute: 'forma_pagamento'	
 		g.column name: 'Quantidade (Volume)', attribute: 'volume'
 		g.column name: 'Peso', attribute: 'peso' do |registro|
 			registro.peso.to_s + 'Kg'
@@ -37,8 +45,6 @@
 		g.column name: 'Recebido por', attribute: 'recebido_por'
 		g.column name: 'Jadlog Numero Lista', attribute: 'jadlog_lista_numero'
 		g.column name: 'Jadlog Número de conhecimento', attribute: 'jadlog_conhecimento_numero'
-		
-		
 		
     end %>
 </div>

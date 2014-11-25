@@ -1,0 +1,77 @@
+<%= form_for(@empresa, :html => { :role => "form", :class =>"form-horizontal"}) do |f| %>
+  <% if @empresa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
+
+      <ul>
+      <% @empresa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+	<div class="form-wrapper-group">
+		<div class="form-group">
+			<%= f.label :nome, 'Nome', :class => "col-sm-1 control-label"%>
+			<div class="col-sm-3">
+			<%= f.text_field :nome, :class =>"form-control" %>
+			</div>	
+			
+			<%= f.label :razao_social, 'Razão Social', :class => "col-sm-2 control-label"%>
+			<div class="col-sm-4">
+			<%= f.text_field :razao_social, :class =>"form-control" %>
+			</div>			
+	  	</div>
+	</div>
+	<div class="form-wrapper-group">
+		<div class="form-group">
+			<%= f.label :cnpj, 'CNPJ', :class => "col-sm-1 control-label"%>
+			<div class="col-sm-3">
+			<%= f.text_field :cnpj, :class =>"form-control" %>
+			</div>	
+			
+			<%= f.label :email, 'Email', :class => "col-sm-2 control-label"%>
+			<div class="col-sm-4">
+			<%= f.email_field :email, :class =>"form-control" %>
+			</div>			
+	  	</div>
+	</div>
+	<div class="form-wrapper-group">
+		<div class="form-group">
+			<%= f.label :telefone, 'Telefone', :class => "col-sm-1 control-label"%>
+			<div class="col-sm-3">
+			<%= f.text_field :telefone, :class =>"form-control" %>
+			</div>	
+			
+			<%= f.label :responsavel, 'Responsavel', :class => "col-sm-2 control-label"%>
+			<div class="col-sm-4">
+			<%= f.email_field :responsavel, :class =>"form-control" %>
+			</div>			
+	  	</div>
+	</div>
+	<div class="form-wrapper-group">
+		<div class="form-group">
+			<%= f.label :estado, 'Estado', :class => "col-sm-1 control-label"%>
+			<div class="col-sm-3">
+			<%= f.text_field :estado, :class =>"form-control" %>
+			</div>	
+			
+			<%= f.label :cidade, 'Cidade', :class => "col-sm-2 control-label"%>
+			<div class="col-sm-4">
+			<%= f.email_field :cidade, :class =>"form-control" %>
+			</div>			
+	  	</div>
+	</div>
+	<div class="form-wrapper-group">
+		<div class="form-group">
+			<%= f.label :observacao, 'Observação', :class => "col-sm-1 control-label"%>
+			<div class="col-sm-3">
+			<%= f.text_area :observacao, :class =>"form-control" %>
+			</div>		
+	  	</div>
+	</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

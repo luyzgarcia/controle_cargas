@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :empresas
+
+  resources :tipo_pagamentos
+
   #get 'redespacho/index'
 
   devise_for :users
