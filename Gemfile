@@ -55,3 +55,6 @@ gem "twitter-bootstrap-rails"
 gem "wice_grid", '3.4.2'
 
 gem 'non-stupid-digest-assets'
+
+#new relic
+gem 'newrelic_rpm'
