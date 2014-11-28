@@ -61,6 +61,13 @@
 		  	</div>
 		  	
 		  	<div class="form-group">
+		  		<%= r.label :valor_comissao, 'Valor comissão', :class => "col-sm-1 control-label "%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<span class="input-group-addon">R$</span>
+						<%= r.text_field :valor_comissao, :class =>"form-control currency" %>
+					</div>
+				</div>
 		  		
 		  		<%= r.label :forma_pagamento, 'Forma de pagamento', :class => "col-sm-1 control-label "%>
 				<div class="col-sm-2">

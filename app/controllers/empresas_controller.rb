@@ -22,18 +22,33 @@ class EmpresasController < ApplicationController
 
   def create
     @empresa = Empresa.new(empresa_params)
-    flash[:notice] = 'Empresa foi cadastrada.' if @empresa.save
-    respond_with(@empresa)
+    respond_to do |format|
+      if @empresa.save
+        format.html {redirect_to empresas_path, notice: 'Empresa foi cadastrada com sucesso!'}
+      else
+        format.html {redirect_to empresas_path, notice: 'Erro ao cadastradar!'} 
+      end
+    end
   end
 
   def update
-    flash[:notice] = 'Empresa atualizada com sucesso.' if @empresa.update(empresa_params)
-    respond_with(@empresa)
+    respond_to do |format| 
+      if @empresa.update(empresa_params)
+          format.html {redirect_to empresas_path, notice: 'Empresa foi atualizada com sucesso!'}
+        else
+          format.html {redirect_to empresas_path, notice: 'Erro ao atualizar registro'} 
+        end
+    end
   end
 
   def destroy
-    @empresa.destroy
-    respond_with(@empresa)
+    respond_to do |format|
+      if @empresa.destroy
+        format.html {redirect_to empresas_path, notice: 'Empresa excluida!'}
+      else
+        format.html {redirect_to empresas_path, notice: 'Erro ao excluir excluida!'}
+      end
+   end
   end
 
   private

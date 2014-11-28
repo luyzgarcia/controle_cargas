@@ -51,7 +51,17 @@ class RedespachosController < ApplicationController
         render :action => 'edit'
       end    
     end
-    
+  end
+  
+  def destroy
+    @redespacho = Redespacho.find(params[:id])
+    respond_to do |format|
+      if @redespacho.destroy
+        format.html {redirect_to redespachos_path, notice: 'Registro excluido!'}
+      else
+        format.html {redirect_to redespachos_path, notice: 'Erro ao excluir registro!'} 
+      end
+   end
   end
   
   private
