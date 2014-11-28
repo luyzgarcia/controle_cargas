@@ -72,7 +72,7 @@
 		  		<%= r.label :forma_pagamento, 'Forma de pagamento', :class => "col-sm-1 control-label "%>
 				<div class="col-sm-2">
 					<div class="input-group">
-						<%= r.select :forma_pagamento, options_for_select([['Boleto'],['Dinheiro'],['A Vista'],['A Prazo'],['Depósito'],['Cartão de crédito'],['Cheque']]), {}, :class =>"form-control " %>
+						<%= r.select :forma_pagamento, options_for_select([['Boleto'],['Dinheiro'],['A Vista'],['A Prazo'],['Depósito'],['Cartão de crédito'],['Cheque']], selected: @redespacho.forma_pagamento), {}, :class =>"form-control " %>
 					</div>
 				</div>
 		  	</div>
