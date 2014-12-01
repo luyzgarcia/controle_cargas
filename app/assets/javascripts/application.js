@@ -16,5 +16,6 @@
 /* require turbolinks*/
 //= require wice_grid
 //= require jquery.maskMoney.min.js
+//= require inputmask.js
 //= require bootstrap-datepicker.js
 //= require_tree .

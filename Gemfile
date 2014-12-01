@@ -50,7 +50,6 @@ gem 'devise'
 #bootstrap"
 gem "twitter-bootstrap-rails"
 
-
 #helper para table html
 gem "wice_grid", '3.4.2'
 

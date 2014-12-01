@@ -28,7 +28,7 @@
 		<div class="form-group">
 			<%= f.label :cnpj, 'CNPJ', :class => "col-sm-1 control-label"%>
 			<div class="col-sm-3">
-			<%= f.text_field :cnpj, :class =>"form-control" %>
+			<%= f.text_field :cnpj, :class =>"form-control", :data =>{:mask =>"999.999.999-99"} %>
 			</div>	
 			
 			<%= f.label :email, 'Email', :class => "col-sm-2 control-label"%>
@@ -41,7 +41,7 @@
 		<div class="form-group">
 			<%= f.label :telefone, 'Telefone', :class => "col-sm-1 control-label"%>
 			<div class="col-sm-3">
-			<%= f.text_field :telefone, :class =>"form-control" %>
+			<%= f.text_field :telefone, :class =>"form-control", :data =>{:mask =>"(999)9999-9999?9"} %>
 			</div>	
 			
 			<%= f.label :responsavel, 'Responsavel', :class => "col-sm-2 control-label"%>
