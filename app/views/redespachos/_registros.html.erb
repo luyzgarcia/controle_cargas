@@ -1,5 +1,16 @@
-<div class="table-responsive table-bordered overflow-x ">
+<div class="overflow-x ">
 	<%= grid(@registros, :class => 'table_2600') do |g|
+		g.row_attributes do |tr|
+			#{class: tr.status == 'AND' ? 'warning' : 'success'}
+			case tr.status
+				when 'AND'
+				{class: 'warning'}
+			when 'FIN'
+				{class: 'success'}
+			when
+				{class: 'active'}
+			end
+		end
 		g.blank_slate  do
 	    	content_tag :div, "Nenhum registro encontrado", class: 'well'
 	  	end
