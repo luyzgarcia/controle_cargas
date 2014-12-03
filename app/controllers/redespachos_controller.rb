@@ -64,6 +64,34 @@ class RedespachosController < ApplicationController
    end
   end
   
+  def andamento
+    @redespacho = Redespacho.find(params[:id])
+    @redespacho.update_attribute(:status, 'AND')
+    
+    respond_to do |format|
+      if @redespacho.save
+        format.html {redirect_to redespachos_path, notice: 'Redespacho atualizado com sucesso!'}
+      else
+        format.html {redirect_to redespachos_path, notice: 'Ouve um errro, tente novamente mais tarde!'}
+      end
+    end     
+  end
+  
+  def finalizado
+    @redespacho = Redespacho.find(params[:id])
+    @redespacho.update_attribute(:status, 'FIN')
+    
+    respond_to do |format|
+      if @redespacho.save
+        format.html {redirect_to redespachos_path, notice: 'Redespacho atualizado com sucesso!'}
+      else
+        format.html {redirect_to redespachos_path, notice: 'Ouve um errro, tente novamente mais tarde!'}
+      end
+    end     
+    
+  end
+  
+  
   private
   
   def carrega_lista

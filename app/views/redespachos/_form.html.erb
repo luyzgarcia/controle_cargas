@@ -1,7 +1,19 @@
 <div class="">
 	<h2>Redespacho</h2>
 	<%= form_for(@redespacho, :html => { :role => "form", :class =>"form-horizontal div_2048"}) do |r| %>
-		
+		<% if @redespacho.errors.any? %>
+	    <div id="error_explanation">
+		  <div class="alert alert-danger" role="alert">
+		  	<strong>Erro salvar redespacho:</strong>
+		  	<br/><br/>
+		    <ul>
+		    	<% @redespacho.errors.full_messages.each do |message| %>
+		        	<li><%= message %></li>
+		      	<% end %>
+		    </ul>
+		   </div>
+	    </div>
+	  <% end %>
 		<div class="form-wrapper-group">
 			<p>Rementente</p>
 			<div class="form-group">

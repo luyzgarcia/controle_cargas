@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
+  
+  
   resources :empresas
-
   resources :tipo_pagamentos
 
   #get 'redespacho/index'
-
-  devise_for :users
   
-  resources :redespachos
+  devise_for :users, :path_prefix => 'my'
+  resources :users
+  
+  resources :redespachos do
+    member do
+      get :andamento
+      get :finalizado
+    end
+  end
   resources :dashboard
   
   root 'dashboard#index'

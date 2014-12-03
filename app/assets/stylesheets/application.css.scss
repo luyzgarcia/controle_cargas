@@ -187,7 +187,35 @@ header {
     }
   }
 }
-
+.menu_drop {
+  .btn-group {
+    width: 100%;
+    padding: 10px 0;
+  }
+  .btn-group
+    .btn-link {
+      width: 88%;
+      border-radius: 0;
+      text-align: left;
+      background: #fff;
+      a {
+        height: 20px;
+        padding: 0 !important;
+      }
+    }
+    .btn-link:hover {
+      text-decoration: none !important;
+    }
+    .dropdown-toggle {
+      background: #fff;
+    }
+}
+.menu_drop:hover .btn-group, 
+.menu_drop:hover .btn-link, 
+.menu_drop:hover .dropdown-toggle {
+  background: #dcdddf;
+  
+}
 
 #painel_conteudo {
  // background: #dcdddf;
@@ -203,7 +231,7 @@ header {
     a {
       margin: 0 5px;
     }
-    .excluir:before, .editar:before {
+    .excluir:before, .editar:before, .finalizado:before, .andamento:before {
       font-family: 'icones';
       color: #000;
       font-size: 14pt;    
@@ -219,6 +247,18 @@ header {
     }
     .editar:hover:before {
       color: rgb(1, 94, 176);
+    }
+    .finalizado:before {
+      content: "\e203";
+    }
+    .finalizado:hover:before {
+      color: #3D7600;
+    }
+    .andamento:before {
+      content: "\e204";
+    }
+    .andamento:hover:before {
+      color: #8B3F3F;
     }
   }
   .acoes a:hover, a:focus {

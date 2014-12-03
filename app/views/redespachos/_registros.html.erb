@@ -18,6 +18,8 @@
 		g.column name: 'Ações', class: 'acoes' do |option|
 			buffer =  link_to('', edit_redespacho_path(option), :class => 'editar')
 			buffer += link_to('', redespacho_path(option),:class => 'excluir', method: :delete, data: {confirm: 'Você tem certeza?'})
+			buffer += link_to('', andamento_redespacho_path(option), :class => 'andamento', data: {confirm: 'Definir como em andamento?'})
+			buffer += link_to('', finalizado_redespacho_path(option), :class => 'finalizado', data: {confirm: 'Definir como em finalizado?'})
 			raw buffer
 		end
 		

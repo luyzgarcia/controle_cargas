@@ -18,4 +18,10 @@
 //= require jquery.maskMoney.min.js
 //= require inputmask.js
 //= require bootstrap-datepicker.js
+//= require tooltip.js
 //= require_tree .
+
+$(function () {
+    console.log('iniciando tooltip...');
+    $('[data-toggle="tooltip"]').tooltip();
+})
