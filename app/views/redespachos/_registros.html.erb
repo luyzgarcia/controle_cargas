@@ -15,9 +15,9 @@
 	    	content_tag :div, "Nenhum registro encontrado", class: 'well'
 	  	end
 	  	
-		g.column name: 'Ações' do |option|
-			buffer =  link_to('Editar', edit_redespacho_path(option)) + ' | '
-			buffer += link_to('Excluir', redespacho_path(option), method: :delete, data: {confirm: 'Você tem certeza?'})
+		g.column name: 'Ações', class: 'acoes' do |option|
+			buffer =  link_to('', edit_redespacho_path(option), :class => 'editar')
+			buffer += link_to('', redespacho_path(option),:class => 'excluir', method: :delete, data: {confirm: 'Você tem certeza?'})
 			raw buffer
 		end
 		
@@ -51,22 +51,22 @@
 		g.column name: 'Destinatario', attribute: 'destinatario'
 		g.column name: 'Destinatario Cidade', attribute: 'destinatario_cidade'
 		g.column name: 'Valor do frete', attribute: 'valor_frete' do |registro| 
-		 'R$' + registro.valor_frete.to_s
+		 'R$' + registro.valor_frete.to_s if registro.valor_frete
 		end
 		g.column name: 'Valor Redespacho', attribute: 'valor_redespacho'do |registro| 
-		 'R$' + registro.valor_redespacho.to_s
+		 'R$' + registro.valor_redespacho.to_s if registro.valor_redespacho
 		end
 		g.column name: 'Valor Comissão', attribute: 'valor_comissao'do |registro| 
-		 'R$' + registro.valor_comissao.to_s
+		 'R$' + registro.valor_comissao.to_s if registro.valor_comissao
 		end	
 		g.column name: 'Forma de pagamento', attribute: 'forma_pagamento'	
 		g.column name: 'Quantidade (Volume)', attribute: 'volume'
 		g.column name: 'Peso', attribute: 'peso' do |registro|
-			registro.peso.to_s + 'Kg'
+			registro.peso.to_s + 'Kg' if registro.peso
 		end
 		#g.column name: 'Fornecedor', attribute: ''
 		g.column name: 'NF Valor', attribute: 'nf_valor' do |registro|
-		  'R$' + registro.nf_valor.to_s
+		  'R$' + registro.nf_valor.to_s if registro.nf_valor
 		end
 		g.column name: 'NF Número', attribute: 'nf_numero'
 		g.column name: 'Data de envio', attribute: 'data_envio' do |registro|

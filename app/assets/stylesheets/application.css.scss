@@ -15,6 +15,15 @@
  */
 @import '_botoes.scss';
 
+/*Importacao das fontes*/
+@font-face {
+  font-family: 'icones';
+  font-weight: normal;
+  font-style: normal;
+  src: local('icons'), local('icons'), url(font_path('icons.woff')) format('woff');
+}
+
+
 html {
   min-height: 100%;
   position: relative;
@@ -190,6 +199,32 @@ header {
   .overflow-x {
     overflow-x: scroll;
   }
+  .acoes {
+    a {
+      margin: 0 5px;
+    }
+    .excluir:before, .editar:before {
+      font-family: 'icones';
+      color: #000;
+      font-size: 14pt;    
+    }
+    .excluir:before {
+      content: "\e202";
+    }
+    .excluir:hover:before {
+      color: #FC0000;
+    }
+    .editar:before {
+      content: "\e201";
+    }
+    .editar:hover:before {
+      color: rgb(1, 94, 176);
+    }
+  }
+  .acoes a:hover {
+    text-decoration: none;
+  }
+  
 /************************************************************************/
 /*********************************JANELAS*******************************/
 /************************************************************************/
@@ -317,7 +352,7 @@ header {
     
     
     /****************************************************************
-     * ***********************Boteos no canto da jenal******************
+     * ***********************Boteos no canto da janela******************
      *****************************************************************/
     .btn_baixar a {
       background: url(/assets/botoes_min.png) no-repeat -41px 0px;
