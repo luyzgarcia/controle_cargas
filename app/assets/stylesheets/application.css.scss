@@ -221,7 +221,9 @@ header {
       color: rgb(1, 94, 176);
     }
   }
-  .acoes a:hover {
+  .acoes a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
     text-decoration: none;
   }
   

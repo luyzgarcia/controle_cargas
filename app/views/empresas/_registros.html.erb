@@ -8,16 +8,18 @@
 		    	content_tag :div, "Nenhum registro encontrado", class: 'well'
 		  	end
 			
-			g.column name: 'Ações' do |option|
-				buffer =  link_to('Editar', edit_empresa_path(option)) + ' | '
-				buffer += link_to('Excluir', empresa_path(option), method: :delete, data: {confirm: 'Você tem certeza?'})
+			g.column name: 'Ações', class: 'acoes' do |option|
+				buffer =  link_to('', edit_empresa_path(option), :class => 'editar')
+				buffer += link_to('', empresa_path(option),:class => 'excluir', method: :delete, data: {confirm: 'Você tem certeza?'})
 				raw buffer
 			end
 			
 			g.column name: 'Nome', attribute: 'nome'
 			g.column name: 'Razao_social', attribute: 'razao_social'
 			g.column name: 'Email', attribute: 'email'
-			g.column name: 'Telefone', attribute: 'telefone'
+			g.column name: 'Telefone', attribute: 'telefone' do |empresa|
+				number_to_phone(empresa.telefone)
+			end
 			g.column name: 'Responsavel', attribute: 'responsavel'
 			g.column name: 'Cidade', attribute: 'cidade'
 			
