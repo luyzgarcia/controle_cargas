@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201131430) do
+ActiveRecord::Schema.define(version: 20141202123638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,23 +34,25 @@ ActiveRecord::Schema.define(version: 20141201131430) do
     t.string   "remetente"
     t.string   "destinatario"
     t.string   "destinatario_cidade"
-    t.decimal  "valor_redespacho",           precision: 5, scale: 2, default: 0.0
-    t.decimal  "valor_comissao",             precision: 5, scale: 2, default: 0.0
-    t.decimal  "valor_frete",                precision: 5, scale: 2, default: 0.0
+    t.decimal  "valor_redespacho",                     precision: 5, scale: 2, default: 0.0
+    t.decimal  "valor_comissao",                       precision: 5, scale: 2, default: 0.0
+    t.decimal  "valor_frete",                          precision: 5, scale: 2, default: 0.0
     t.integer  "volume"
-    t.decimal  "peso",                       precision: 5, scale: 2, default: 0.0
-    t.decimal  "nf_valor",                   precision: 5, scale: 2, default: 0.0
+    t.decimal  "peso",                                 precision: 5, scale: 2, default: 0.0
+    t.decimal  "nf_valor",                             precision: 5, scale: 2, default: 0.0
     t.integer  "nf_numero"
     t.datetime "data_envio"
     t.datetime "data_entrega"
     t.string   "recebido_por"
     t.string   "jadlog_lista_numero"
     t.string   "jadlog_conhecimento_numero"
-    t.datetime "created_at",                                                       null: false
-    t.datetime "updated_at",                                                       null: false
+    t.datetime "created_at",                                                                 null: false
+    t.datetime "updated_at",                                                                 null: false
     t.string   "remetente_cidade"
     t.string   "forma_pagamento"
     t.integer  "empresa_id"
+    t.string   "tipo_redespacho",            limit: 3
+    t.string   "status",                     limit: 3
   end
 
   create_table "tipo_pagamentos", force: true do |t|

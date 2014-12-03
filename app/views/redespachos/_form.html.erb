@@ -17,10 +17,17 @@
 		  	</div>
 		  	<div class="form-group">
 				<%= r.label :empresa_id, 'Empresa', :class => "col-sm-1 control-label"%>
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 				<%= r.collection_select :empresa_id ,Empresa.all, :id,:nome,{:include_blank => 'Selecione...'}, {:class => 'form-control'} %>
 				</div>
 				
+				<%= r.label :tipo_redespacho, 'Tipo de redespacho', :class => "col-sm-1 control-label "%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<%= r.select :tipo_redespacho, options_for_select([['Entrega','ENT'],['Coleta', 'COL'],['Redespacho', 'RED'],['Outros', 'OUT']], selected: @redespacho.tipo_redespacho), {}, :class =>"form-control " %>
+					</div>
+				</div>
+
 		  	</div>
 	  	</div>
 	  	<div class="form-wrapper-group">
@@ -151,7 +158,22 @@
 			</div>
 		</div>
 		
-		<%= r.submit 'Salvar', :class => "btn btn-success" %>
-		<%= link_to 'Cancelar', redespachos_path,  :class => "btn btn-danger" %>
+		<div class="form-wrapper-group">
+			<p>Informativo</p>
+			<div class="form-group">
+				<%= r.label :status, 'Tipo de redespacho', :class => "col-sm-1 control-label "%>
+				<div class="col-sm-2">
+					<div class="input-group">
+						<%= r.select :status, options_for_select([['Em Andamento','AND'],['Finalizado', 'FIN']], selected: @redespacho.status), {}, :class =>"form-control " %>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="actions">
+			<%= r.submit 'Salvar', :class => "btn btn-success" %>
+			<%= link_to 'Cancelar', redespachos_path,  :class => "btn btn-danger" %>
+		</div>
 	<% end %>
 </div>

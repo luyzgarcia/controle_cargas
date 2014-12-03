@@ -16,7 +16,7 @@ if defined?(Wice::Defaults)
   Wice::Defaults::REUSE_LAST_COLUMN_FOR_FILTER_ICONS = true
 
   # The label of the first option of a custom dropdown list meaning 'All items'
-  Wice::Defaults::CUSTOM_FILTER_ALL_LABEL = '--'
+  Wice::Defaults::CUSTOM_FILTER_ALL_LABEL = 'Todos'
 
   # A list of classes for the table tag of the grid
   Wice::Defaults::DEFAULT_TABLE_CLASSES = ['table', 'table-bordered', 'table-striped']
@@ -41,7 +41,7 @@ if defined?(Wice::Defaults)
   Wice::Defaults::SHOW_FILTER = :always
 
   # A boolean value specifying if a change in a filter triggers reloading of the grid.
-  Wice::Defaults::AUTO_RELOAD = false
+  Wice::Defaults::AUTO_RELOAD = true
 
 
   # SQL operator used for matching strings in string filters.
@@ -96,15 +96,18 @@ if defined?(Wice::Defaults)
 
   # Format of the datetime displayed.
   # If you change the format, make sure to check if +DATETIME_PARSER+ can still parse this string.
-  Wice::Defaults::DATETIME_FORMAT = "%Y-%m-%d %H:%M"
+  #Wice::Defaults::DATETIME_FORMAT = "%Y-%m-%d %H:%M"
+  Wice::Defaults::DATETIME_FORMAT = "%d-%m-%Y %H:%M"
 
   # Format of the date displayed.
   # If you change the format, make sure to check if +DATE_PARSER+ can still parse this string.
-  Wice::Defaults::DATE_FORMAT     =  "%Y-%m-%d"
+  #Wice::Defaults::DATE_FORMAT     =  "%Y-%m-%d"
+  Wice::Defaults::DATE_FORMAT     =  "%d-%m-%Y"
 
   # Format of the date displayed in jQuery's Datepicker
   # If you change the format, make sure to check if +DATE_PARSER+ can still parse this string.
-  Wice::Defaults::DATE_FORMAT_JQUERY     =  "yy-mm-dd"
+  #Wice::Defaults::DATE_FORMAT_JQUERY     =  "yy-mm-dd"
+  Wice::Defaults::DATE_FORMAT_JQUERY     =  "dd-mm-yy"
 
 
   # With Calendar helpers enabled the parameter sent is the string displayed. This lambda will be given a date string in the

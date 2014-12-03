@@ -11,9 +11,31 @@
 		end
 		
 		g.column name: 'Código', attribute: 'id'
-		g.column name: 'Empresa', attribute: 'empresa_id', custom_filter: [:empresa, :to_option] do |registro|
-			registro.empresa.nome if !registro.empresa.nil?
+		g.column name: 'Empresa', attribute: 'empresa_id', 
+				custom_filter: Empresa.all.map{|emp| [emp.nome, emp.id]} do |registro|
+			registro.empresa.nome if registro.empresa
 		end
+		g.column name: 'Status', attribute: 'status', custom_filter: [['Andamento', 'AND'], ['Finalizado','FIN'],['Não definido','null']] do |registro|
+			registro.status == 'AND' ? 'Andamento' : 'Finalizado' if !registro.status.nil?
+		end
+		g.column name: 'Tipo', attribute: 'tipo_redespacho', custom_filter: [['Entrega', 'ENT'], ['Coleta','COL'],
+			['Redespacho', 'RED'], ['Outros','OUT'],['Não definido','null']] do |registro|
+			if !registro.tipo_redespacho.nil?
+				case registro.tipo_redespacho
+				when 'ENT'
+					'Entrega'
+				when 'COL'
+					'Coleta'
+				when 'RED'
+					'Redespacho'
+				when 'OUT'
+					'Outros'
+				else
+					''
+				end
+			end
+		end
+		
 		g.column name: 'Remetente', attribute: 'remetente'
 		g.column name: 'Destinatario', attribute: 'destinatario'
 		g.column name: 'Destinatario Cidade', attribute: 'destinatario_cidade'
