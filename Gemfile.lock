@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/namick/obfuscate_id.git
+  revision: 37fda6c458fe7bca970f6a801f23080ecd88dfb8
+  specs:
+    obfuscate_id (0.0.4)
+      rails (>= 3.2.15)
+      scatter_swap (~> 0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -131,6 +139,7 @@ GEM
       sass (~> 3.2)
       sprockets (~> 2.12)
       sprockets-rails (>= 2.0, < 4.0)
+    scatter_swap (0.0.3)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -181,6 +190,7 @@ DEPENDENCIES
   jquery-rails (~> 4.0.0.beta2)
   newrelic_rpm
   non-stupid-digest-assets
+  obfuscate_id!
   pg
   rails (= 4.2.0.beta2)
   sass-rails (~> 5.0.0.beta1)

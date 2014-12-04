@@ -57,3 +57,6 @@ gem 'non-stupid-digest-assets'
 
 #new relic
 gem 'newrelic_rpm'
+
+#obfuscate_id
+gem 'obfuscate_id', :git => 'https://github.com/namick/obfuscate_id.git'
