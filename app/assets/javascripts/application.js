@@ -19,6 +19,7 @@
 //= require inputmask.js
 //= require bootstrap-datepicker.js
 //= require tooltip.js
+//= require validator.js
 //= require_tree .
 
 $(function () {
