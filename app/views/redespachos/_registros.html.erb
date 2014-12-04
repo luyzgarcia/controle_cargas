@@ -50,8 +50,9 @@
 		end
 		
 		g.column name: 'Remetente', attribute: 'remetente'
+		g.column name: 'Cidade do remetente', attribute: 'remetente_cidade'
 		g.column name: 'Destinatario', attribute: 'destinatario'
-		g.column name: 'Destinatario Cidade', attribute: 'destinatario_cidade'
+		g.column name: 'Destinatario - Cidade', attribute: 'destinatario_cidade'
 		g.column name: 'Valor do frete', attribute: 'valor_frete' do |registro| 
 		 'R$' + registro.valor_frete.to_s if registro.valor_frete
 		end

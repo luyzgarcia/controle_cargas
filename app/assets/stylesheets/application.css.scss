@@ -142,14 +142,15 @@ header {
       border: 1px solid #dedfe1;
       text-align: center;
       width: 150px;
-      height: 150px;
+      //height: 150px;
+      height: auto;
       margin-bottom: 15px;
       img {
         width: 100%;
       }
     }
     .user_name {
-      font: normal 16pt/1.5em nexa_bold, Tahoma;
+      font: normal 12pt/1.5em nexa_bold, Tahoma;
       color: #004961;
       word-wrap: break-word;
 
