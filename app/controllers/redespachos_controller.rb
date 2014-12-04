@@ -107,7 +107,7 @@ class RedespachosController < ApplicationController
   end
   
   def redespacho_params
-    params.require(:redespacho).permit(:remetente,:destinatario, :destinatario_cidade, :valor_redespacho,
+    params.require(:redespacho).permit(:remetente,:remetente_cidade, :destinatario, :destinatario_cidade, :valor_redespacho,
     :valor_comissao, :valor_liquido, :valor_frete, :volume, :peso, :nf_valor, :nf_numero, :forma_pagamento,
     :tipo_redespacho, :status,
     :data_envio, :data_entrega, :recebido_por, :jadlog_lista_numero, :jadlog_conhecimento_numero, :empresa_id)
