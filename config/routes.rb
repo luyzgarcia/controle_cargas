@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  
+  resources :relatorios
   resources :empresas
   resources :tipo_pagamentos
 

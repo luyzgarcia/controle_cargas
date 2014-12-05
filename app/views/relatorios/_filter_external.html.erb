@@ -1,0 +1,97 @@
+<h4>Selecione os filtros desejados e clique em filtrar</h4>
+<br/>
+<style>
+	.custom-dropdown-container {
+		margin-bottom: -15px !important;
+	}
+	.custom-dropdown {
+		display: block;
+		width: 100%;
+		height: 34px;
+		padding: 6px 12px;
+		font-size: 14px;
+		line-height: 1.42857143;
+		color: #555;
+		background-color: #fff;
+		background-image: none;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+		-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+		-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+		transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	}
+</style>
+<div class="form-horizontal" role="form">
+	<div class="form-wrapper-group">
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Código</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :id_filter) %>
+			</div>
+	  	</div>
+	  	<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Status</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :status_filter) %>
+			</div>
+	  	</div>
+	  	<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Empresa</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :empresa_filter)%>
+			</div>
+	  	</div>
+	  	<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Remetente</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :remetente_filter) %>
+			</div>
+	  	</div>
+	  	<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Cidade do remetente</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :remetente_cidade_filter) %>
+			</div>
+	  	</div>
+	  	<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Destinatario</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :destinatario_filter) %>
+			</div>
+	  	</div>
+	  	<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Cidade destinatario</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :destinatario_cidade_filter) %>
+			</div>
+	  	</div>
+	  
+	  	
+	  	<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Data de envio</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :data_envio) %>
+			</div>
+	  	</div>
+	  	<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Data de entrega</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :data_entrega) %>
+			</div>
+	  	</div>
+	  	
+	  	<div class="actions">
+	  		<button class="wg-external-submit-button btn btn-success" data-grid-name="grid">Filtar</button>
+			<button class="wg-external-reset-button btn btn-danger" data-grid-name="grid">Limpar filtros</button>
+			<button class="wg-external-csv-export-button btn btn-primary" data-grid-name="registros">Exportar para CSV</button>
+		</div>
+</div>
+
+</div>
+
+
+<br/>
+<!-- Manda renderizar a tabela -->
+<%= render_grid(@registros) %>

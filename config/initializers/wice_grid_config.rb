@@ -28,7 +28,7 @@ if defined?(Wice::Defaults)
   Wice::Defaults::SHOW_UPPER_PAGINATION_PANEL = false
 
   # Disabling CSV export by default
-  Wice::Defaults::ENABLE_EXPORT_TO_CSV = false
+  Wice::Defaults::ENABLE_EXPORT_TO_CSV = true
 
   # Default CSV field separator
   Wice::Defaults::CSV_FIELD_SEPARATOR = ','
