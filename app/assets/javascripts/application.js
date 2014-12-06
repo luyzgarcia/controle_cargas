@@ -23,6 +23,6 @@
 //= require_tree .
 
 $(function () {
-    console.log('iniciando tooltip...');
-    $('[data-toggle="tooltip"]').tooltip();
+    //console.log('iniciando tooltip...');
+    //$('[data-toggle="tooltip"]').tooltip();
 })

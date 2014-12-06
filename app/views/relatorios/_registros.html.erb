@@ -83,3 +83,8 @@
 		     :class => 'last_row')
 		  end
     end %>
+<p>Id dos registros da pagina</p>
+<% @registros.current_page_records.each do |a| %>
+	<span>ID: <%= a.id %></span>&nbsp;
+<% end %>
+<%= link_to %>

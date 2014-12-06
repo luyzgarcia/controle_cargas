@@ -60,3 +60,7 @@ gem 'newrelic_rpm'
 
 #obfuscate_id
 gem 'obfuscate_id', :git => 'https://github.com/namick/obfuscate_id.git'
+
+#PDF generator
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

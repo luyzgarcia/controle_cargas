@@ -7,5 +7,5 @@ jQuery ->
     alert('o id da linha clicada é ['+linha+']')
 
 jQuery ->
-  $('.currency').maskMoney();
+  $('.currency').maskMoney({thousands:'', decimal:'.', allowZero: true});
   $('.datepicker').datepicker();
