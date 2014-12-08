@@ -1,4 +1,4 @@
-	<% valores = {:frete => 0.00,:redespacho => 0.00, :comissao => 0.00} %>
+	<% valores = {:frete => 0.00,:redespacho => 0.00, :comissao => 0.00, :peso => 0.00, :volume => 0.00} %>
 	<%= define_grid(@registros) do |g|
 		g.row_attributes do |tr|
 			#{class: tr.status == 'AND' ? 'warning' : 'success'}
@@ -56,8 +56,12 @@
 		 	'R$' + registro.valor_comissao.to_s if registro.valor_comissao
 		end	
 		g.column name: 'Forma de pagamento', attribute: 'forma_pagamento', filter: false
-		g.column name: 'Quantidade (Volume)', attribute: 'volume', filter: false
+		g.column name: 'Quantidade (Volume)', attribute: 'volume', filter: false do |registro|
+			valores[:volume] = valores[:volume] + registro.volume if registro.volume
+			registro.volume
+		end
 		g.column name: 'Peso', attribute: 'peso', filter: false do |registro|
+			valores[:peso] = valores[:peso] + registro.peso if registro.peso
 			registro.peso.to_s + 'Kg' if registro.peso
 		end
 		#g.column name: 'Fornecedor', attribute: ''
@@ -77,9 +81,12 @@
 		g.last_row do |number_of_columns|         # This row will always be added to the bottom of the grid
 		    content_tag(:tr,
 		    	content_tag(:td, 'Total',:colspan => 8) +
-		      	content_tag(:td, 'R$' + valores[:frete].to_s) +
-		      	content_tag(:td, 'R$' + valores[:redespacho].to_s) +
-		      	content_tag(:td, 'R$' + valores[:comissao].to_s),
+		      	content_tag(:td, 'R$' + number_with_delimiter(valores[:frete].to_s)) +
+		      	content_tag(:td, 'R$' + number_with_delimiter(valores[:redespacho].to_s)) +
+		      	content_tag(:td, 'R$' + number_with_delimiter(valores[:comissao].to_s)) +
+		      	content_tag(:td, '') +
+		      	content_tag(:td, number_with_delimiter(valores[:volume].to_s) + ' un.') +
+		      	content_tag(:td, number_with_delimiter(valores[:peso].to_s) + 'Kg'),
 		     :class => 'last_row')
 		  end
     end %>
@@ -87,4 +94,3 @@
 <% @registros.current_page_records.each do |a| %>
 	<span>ID: <%= a.id %></span>&nbsp;
 <% end %>
-<%= link_to %>
