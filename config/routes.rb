@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :relatorios
+  
   resources :empresas
   resources :tipo_pagamentos
 
@@ -16,7 +16,12 @@ Rails.application.routes.draw do
     end
   end
   resources :dashboard
-  
+  resources :relatorios do
+    member do
+      
+    end
+  end
+  get 'gerar_pdf_relatorio' => 'relatorios#gerar_pdf'
   root 'dashboard#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

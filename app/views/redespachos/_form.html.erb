@@ -1,6 +1,7 @@
 <div class="">
-	<h2>Redespacho</h2>
+	
 	<%= form_for(@redespacho, :html => { :role => "form", :class =>"form-horizontal div_2048"}, :data=>{:toggle =>"validator"}) do |r| %>
+	<h2>Controle de Carga</h2>
 		<% if @redespacho.errors.any? %>
 	    <div id="error_explanation">
 		  <div class="alert alert-danger" role="alert">
@@ -14,6 +15,15 @@
 		   </div>
 	    </div>
 	  <% end %>
+	  	<div class="form-wrapper-group">
+			<p>Empresa</p>
+			<div class="form-group">
+	  			<%= r.label :empresa_id, 'Empresa prestador de serviço', :class => "col-sm-1 control-label"%>
+				<div class="col-sm-2">
+				<%= r.collection_select :empresa_id ,Empresa.all, :id,:nome,{:include_blank => 'Selecione...'}, {:class => 'form-control'} %>
+				</div>
+			</div>
+		</div>	
 		<div class="form-wrapper-group">
 			<p>Rementente</p>
 			<div class="form-group">
@@ -28,10 +38,7 @@
 				</div>
 		  	</div>
 		  	<div class="form-group">
-				<%= r.label :empresa_id, 'Empresa', :class => "col-sm-1 control-label"%>
-				<div class="col-sm-2">
-				<%= r.collection_select :empresa_id ,Empresa.all, :id,:nome,{:include_blank => 'Selecione...'}, {:class => 'form-control'} %>
-				</div>
+				
 				
 				<%= r.label :tipo_redespacho, 'Tipo de redespacho', :class => "col-sm-1 control-label "%>
 				<div class="col-sm-2">
