@@ -37,7 +37,7 @@
 	        	<tr>
 	        		<td><%= reg.id %></td>
 	        		<td><%= reg.empresa.nome %></td>
-	        		<td><%= reg.status == 'AND' ? 'Andamento' : 'Finalizado' if reg.status.nil?%></td>
+	        		<td><%= reg.status == 'AND' ? 'Andamento' : 'Finalizado' if !reg.status.nil? %></td>
 	        		<td><%= 
 	        				if reg.tipo_redespacho.nil?
 								case reg.tipo_redespacho

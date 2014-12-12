@@ -12,3 +12,5 @@
 /tmp
 
 .DS_Store
+
+config/initializers/wicked_pdf.rb
