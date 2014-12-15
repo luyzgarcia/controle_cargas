@@ -99,12 +99,12 @@
 	        <% end%>
 	        	<tr>
 	        		<td colspan="8">Total</td>
-	        		<td>R$<%= number_with_delimiter(valores[:frete].to_s, precision: 2) %></td>
-	        		<td>R$<%= number_with_delimiter(valores[:redespacho].to_s, precision: 2) %></td>
-	        		<td>R$<%= number_with_delimiter(valores[:comissao].to_s, precision: 2) %></td>
+	        		<td>R$<%= number_with_precision(valores[:frete].to_s, precision: 2) %></td>
+	        		<td>R$<%= number_with_precision(valores[:redespacho].to_s, precision: 2) %></td>
+	        		<td>R$<%= number_with_precision(valores[:comissao].to_s, precision: 2) %></td>
 	        		<td></td>
-	        		<td><%= number_with_delimiter(valores[:volume].to_s) %>un.</td>
-	        		<td><%= number_with_delimiter(valores[:peso].to_s, precision: 2) %>Kg</td>
+	        		<td><%= number_with_precision(valores[:volume].to_s) %>un.</td>
+	        		<td><%= number_with_precision(valores[:peso].to_s, precision: 2) %>Kg</td>
 	        		<td colspan="3"></td>
 	        	</tr>
 	       
