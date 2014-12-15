@@ -3,6 +3,19 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<%= javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js" %>
 		<%= stylesheet_link_tag 'http://getbootstrap.com/dist/css/bootstrap.min.css'%>
+		<style>
+			.table {
+				width: 98%;
+				margin-bottom: 50px;
+			}
+			.table, .table > thead > tr > th, .table > tbody > tr > td, .table > tbody > tr > th,.table > tfoot > tr > td {
+			   border-color: black;
+			}
+			.table > thead > tr > th {
+				border-bottom: none;
+			}
+			.table
+		</style>
 	</head>
 	<div style="text-align: center">
 		<h2>Relatório de Controle de Cargas</h2>
@@ -86,12 +99,12 @@
 	        <% end%>
 	        	<tr>
 	        		<td colspan="8">Total</td>
-	        		<td>R$<%= number_with_delimiter(valores[:frete].to_s) %></td>
-	        		<td>R$<%= number_with_delimiter(valores[:redespacho].to_s) %></td>
-	        		<td>R$<%= number_with_delimiter(valores[:comissao].to_s) %></td>
+	        		<td>R$<%= number_with_delimiter(valores[:frete].to_s, precision: 2) %></td>
+	        		<td>R$<%= number_with_delimiter(valores[:redespacho].to_s, precision: 2) %></td>
+	        		<td>R$<%= number_with_delimiter(valores[:comissao].to_s, precision: 2) %></td>
 	        		<td></td>
 	        		<td><%= number_with_delimiter(valores[:volume].to_s) %>un.</td>
-	        		<td><%= number_with_delimiter(valores[:peso].to_s) %>Kg</td>
+	        		<td><%= number_with_delimiter(valores[:peso].to_s, precision: 2) %>Kg</td>
 	        		<td colspan="3"></td>
 	        	</tr>
 	       
