@@ -17,11 +17,14 @@ Rails.application.routes.draw do
   end
   resources :dashboard
   resources :relatorios do
-    member do
-      
+    collection do
+      get 'relatorio_por_codigo', to: 'relatorios#relatorio_por_codigo'
+      get 'resultado_relatorio_por_codigo'  
     end
   end
   get 'gerar_pdf_relatorio' => 'relatorios#gerar_pdf'
+  get 'relatorio_contas_a_pagar' => 'relatorios#relatorio_contas_a_pagar'
+  get 'relatorio_contas_a_receber' => 'relatorios#relatorio_contas_a_receber'
   root 'dashboard#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

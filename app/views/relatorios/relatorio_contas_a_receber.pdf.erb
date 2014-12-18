@@ -18,8 +18,9 @@
 		</style>
 	</head>
 	<div style="text-align: center">
-		<h2>Relatório de Controle de Cargas</h2>
+		<h2>Relatório de Contas a Pagar - Controle de Cargas</h2>
 	</div>
+	<p>Relatorio gerado em: <%= Time.now.strftime("%d/%m/%Y %H:%m:%S") %> </p>
 	<br/>
 	<body>
 		<table class="table table-bordered ">
@@ -27,21 +28,13 @@
 	        <tr>
 	          <th>Código</th>
 	          <th>Empresa</th>
-	          <th>Status</th>
-	          <th>Tipo</th>
 	          <th>Remetente</th>
-	          <th>Cidade do Remetente</th>
 	          <th>Destinatario</th>
 	          <th>Cidade do Destinatario</th>
-	          <th>Valor do Frete</th>
-	          <th>Valor a pagar</th>
 	          <th>Valor a receber</th>
-	          <th>Forma de Pagamento</th>
 	          <th>Volume</th>
 	          <th>Peso</th>
-	          <th>NF Valor</th>
 	          <th>Data de envio</th>
-	          <th>Data de entrega</th>
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -50,40 +43,13 @@
 	        	<tr>
 	        		<td><%= reg.id %></td>
 	        		<td><%= reg.empresa.nome %></td>
-	        		<td><%= reg.status == 'AND' ? 'Andamento' : 'Finalizado' if !reg.status.nil? %></td>
-	        		<td><%= 
-	        				if !reg.tipo_redespacho.nil?
-								case reg.tipo_redespacho
-								when 'ENT'
-									'Entrega'
-								when 'COL'
-									'Coleta'
-								when 'RED'
-									'Redespacho'
-								when 'OUT'
-									'Outros'
-								else
-									''
-								end
-							end
-	        			%></td>
 	        		<td><%= reg.remetente %></td>
-	        		<td><%= reg.remetente_cidade %></td>
 	        		<td><%= reg.destinatario %></td>
 	        		<td><%= reg.destinatario_cidade %></td>
 	        		<td><%= 
-	        				valores[:frete] = valores[:frete] + reg.valor_frete if reg.valor_frete
-	        				'R$' + reg.valor_frete.to_s if reg.valor_frete 
-	        			%></td>
-	        		<td><%= 
-	        				valores[:redespacho] = valores[:redespacho] + reg.valor_redespacho if reg.valor_redespacho
-	        				'R$' + reg.valor_redespacho.to_s if reg.valor_redespacho 
-	        			%></td>
-	        		<td><%= 
-	        				valores[:comissao] = valores[:comissao] + reg.valor_comissao if reg.valor_comissao
+	        				valores[:comissao] = valores[:comissao] + reg.valor_redespacho if reg.valor_redespacho
 	        				'R$' + reg.valor_comissao.to_s if reg.valor_comissao 
 	        			%></td>
-	        		<td><%= reg.forma_pagamento %></td>
 	        		<td><%= 
 	        				valores[:volume] = valores[:volume] + reg.volume if reg.volume
 	        				reg.volume.to_s + 'Un.'
@@ -92,17 +58,13 @@
 	        				valores[:peso] = valores[:peso] + reg.peso if reg.peso
 	        				reg.peso.to_s + 'Kg' if reg.peso 
 	        			%></td>
-	        		<td><%= 'R$' + reg.nf_valor.to_s if reg.nf_valor %></td>
 	        		<td><%= reg.data_envio.strftime('%d/%m/%Y') if !reg.data_envio.nil? %></td>
-	        		<td><%= reg.data_entrega.strftime('%d/%m/%Y') if !reg.data_entrega.nil? %></td>
+	        		
 	        	</tr>
 	        <% end%>
 	        	<tr>
-	        		<td colspan="8">Total</td>
-	        		<td>R$<%= number_with_delimiter(number_with_precision(valores[:frete].to_s, precision: 2)) %></td>
-	        		<td>R$<%= number_with_delimiter(number_with_precision(valores[:redespacho].to_s, precision: 2)) %></td>
+	        		<td colspan="5">Total</td>
 	        		<td>R$<%= number_with_delimiter(number_with_precision(valores[:comissao].to_s, precision: 2)) %></td>
-	        		<td></td>
 	        		<td><%= valores[:volume].to_s %>un.</td>
 	        		<td><%= number_with_precision(valores[:peso].to_s, precision: 2) %>Kg</td>
 	        		<td colspan="3"></td>

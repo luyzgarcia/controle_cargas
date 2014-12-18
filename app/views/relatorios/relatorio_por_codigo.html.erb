@@ -1,0 +1,48 @@
+<h4>Digite os códigos para filtrar</h4>
+<br/>
+<div class="form-horizontal" role="form">
+	<%= form_tag 'resultado_relatorio_por_codigo',:id=> 'relatorio_por_codigo',:method => :get, :remote => true do %>
+	<div class="form-wrapper-group">
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Código</label>
+			<div class="col-sm-2">
+				<%= text_field_tag :id %>
+			</div>
+	  	</div>
+	</div>
+	
+	<%= submit_tag 'Gerar relatório', :class => 'btn btn-primary' %>
+	<div class="carregando" style="display: inline-block;">
+		<span style="display: none;">Carregando, aguarde...</span>	
+	</div>
+	<% end %>
+</div>
+<br/>
+<div id="relatorio">
+	<table id="tabela_relatorio" class="table table-bordered ">
+	      <thead>
+	        <tr>
+	          <th>Código</th>
+	          <th>Empresa</th>
+	          <th>Remetente</th>
+	          <th>Cidade do Remetente</th>
+	          <th>Destinatario</th>
+	          <th>Cidade do Destinatario</th>
+	          <th>Valor do frete</th>
+	          <th>Valor a pagar</th>
+	          <th>Valor a receber</th>
+	          <th>Forma de pagamento</th>
+	          <th>Volume</th>
+	          <th>Peso</th>
+	          <th>Data de envio</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	      </tbody>
+	    </table>
+</div>
+	
+<div id="exportar">
+	<%= link_to 'Exportar como contas a Pagar', {:controller => 'relatorios', :action => 'relatorio_contas_a_pagar' }, :data =>{:link => '/relatorio_contas_a_pagar'}, :class => 'btn btn-primary', :target => '_blank' %>
+	<%= link_to 'Exportar como contas a Receber', {:controller => 'relatorios', :action => 'relatorio_contas_a_receber' },:data =>{:link => '/relatorio_contas_a_receber'}, :class => 'btn btn-primary', :target => '_blank' %>
+</div>

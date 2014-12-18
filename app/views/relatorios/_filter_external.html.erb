@@ -26,6 +26,12 @@
 <div class="form-horizontal" role="form">
 	<div class="form-wrapper-group">
 		
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-2 control-label">Código</label>
+			<div class="col-sm-2">
+				<%= grid_filter(@registros, :id_filter) %>
+			</div>
+	  	</div>
 	  	<div class="form-group">
 			<label for="inputEmail3" class="col-sm-2 control-label">Status</label>
 			<div class="col-sm-2">
@@ -81,7 +87,10 @@
 	  		<button class="wg-external-submit-button btn btn-success" data-grid-name="grid">Filtar</button>
 			<button class="wg-external-reset-button btn btn-danger" data-grid-name="grid">Limpar filtros</button>
 			<button class="wg-external-csv-export-button btn btn-primary" data-grid-name="registros">Exportar para CSV</button>
+			<br/><br/>
 			<%= link_to 'Exportar para PDF', {:controller => 'relatorios', :action => 'gerar_pdf', :consulta => request.query_parameters, :format => 'pdf' }, :class => 'btn btn-primary', :target => '_blank' %>
+			<%= link_to 'Versão Contas a Pagar', {:controller => 'relatorios', :action => 'relatorio_contas_a_pagar', :consulta => request.query_parameters, :format => 'pdf' }, :class => 'btn btn-primary', :target => '_blank' %>
+			<%= link_to 'Versão Contas a Receber', {:controller => 'relatorios', :action => 'relatorio_contas_a_receber', :consulta => request.query_parameters, :format => 'pdf' }, :class => 'btn btn-primary', :target => '_blank' %>
 		</div>
 </div>
 

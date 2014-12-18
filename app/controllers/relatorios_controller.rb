@@ -1,5 +1,5 @@
 class RelatoriosController < ApplicationController
-  before_action :filtrar, only: [:gerar_pdf]
+  before_action :filtrar, only: [:gerar_pdf, :relatorio_contas_a_pagar, :relatorio_contas_a_receber]
   
   def index
     
@@ -28,14 +28,88 @@ class RelatoriosController < ApplicationController
     end
   end
   
+  def relatorio_contas_a_pagar
+    respond_to do |format|
+      format.pdf do 
+        render  :pdf                            => 'Relatórios Contas a Pagar - Controle de Cargas',
+                :orientation                    => 'Landscape',
+                :title                          => 'Relatórios Contas a pagar - Controle de Cargas'
+      end
+    end
+  end
+  
+  def relatorio_contas_a_receber
+    respond_to do |format|
+      format.pdf do 
+        render  :pdf                            => 'Relatórios Contas a Receber - Controle de Cargas',
+                :orientation                    => 'Landscape',
+                :title                          => 'Relatórios Contas a pagar - Controle de Cargas'
+      end
+    end
+  end
+  def show
+    
+  end
+  def resultado_relatorio_por_codigo
+    
+    
+    
+    #ids = eval(params[:id])
+    
+    #parametros = params
+    filter = [ ]
+    if !params.nil? && !params.empty? && !params[:id].nil?
+      ids = [ ]
+      ids = params[:id].split(',').map { |s| s.to_i }
+        if !ids.blank?
+          codigo = '('
+          ids.each do |emp|
+            if emp != ids.last
+              codigo += emp.to_s + ','
+            else
+              codigo += emp.to_s + ')'  
+            end 
+          end
+          filter << ["id in #{codigo}"]
+        end
+      @registros = Redespacho.where(filter.join(" AND ")).order('created_at DESC')
+    end
+       
+    respond_to do |format|
+      format.html
+      format.js
+      format.pdf do 
+       render  :pdf                            => 'Relatórios Contas a Receber - Controle de Cargas',
+                :orientation                    => 'Landscape',
+                :title                          => 'Relatórios Contas a pagar - Controle de Cargas'
+     end
+    end
+  end
+  
   private 
   
   def filtrar
     filter = [ ]
+    
+    if !params.nil? && !params.empty? && !params[:id].nil?
+        ids = [ ]
+        ids = params[:id].split(',').map { |s| s.to_i }
+        if !ids.blank?
+          codigo = '('
+          ids.each do |emp|
+            if emp != ids.last
+              codigo += emp.to_s + ','
+            else
+              codigo += emp.to_s + ')'  
+            end 
+          end
+          filter << ["id in #{codigo}"]
+        end
+      end
+    
     if params.has_key?('consulta')
       
       parametros = params[:consulta][:registros][:f] 
-      
       if !parametros.nil? && !parametros.empty?
               
         if !parametros[:empresa_id].blank?
