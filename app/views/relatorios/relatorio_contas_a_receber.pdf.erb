@@ -41,24 +41,24 @@
 	      	<% valores = {:frete => 0.00,:redespacho => 0.00, :comissao => 0.00, :peso => 0.00, :volume => 0.00} %>
 	        <% @registros.each do |reg| %>
 	        	<tr>
-	        		<td><%= reg.id %></td>
-	        		<td><%= reg.empresa.nome %></td>
-	        		<td><%= reg.remetente %></td>
-	        		<td><%= reg.destinatario %></td>
-	        		<td><%= reg.destinatario_cidade %></td>
-	        		<td><%= 
+	        		<td width="5%"><%= reg.id %></td>
+	        		<td width="15%"><%= reg.empresa.nome %></td>
+	        		<td width="15%"><%= reg.remetente %></td>
+	        		<td width="15%"><%= reg.destinatario %></td>
+	        		<td width="15%"><%= reg.destinatario_cidade %></td>
+	        		<td width="10%"><%= 
 	        				valores[:comissao] = valores[:comissao] + reg.valor_comissao if reg.valor_comissao
 	        				'R$' + reg.valor_comissao.to_s if reg.valor_comissao 
 	        			%></td>
-	        		<td><%= 
+	        		<td width="10%"><%= 
 	        				valores[:volume] = valores[:volume] + reg.volume if reg.volume
 	        				reg.volume.to_s + 'Un.'
 	        			%></td>
-	        		<td><%= 
+	        		<td width="5%"><%= 
 	        				valores[:peso] = valores[:peso] + reg.peso if reg.peso
 	        				reg.peso.to_s + 'Kg' if reg.peso 
 	        			%></td>
-	        		<td><%= reg.data_envio.strftime('%d/%m/%Y') if !reg.data_envio.nil? %></td>
+	        		<td width="10%"><%= reg.data_envio.strftime('%d/%m/%Y') if !reg.data_envio.nil? %></td>
 	        		
 	        	</tr>
 	        <% end%>

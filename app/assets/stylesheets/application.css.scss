@@ -220,11 +220,12 @@ header {
 
 #painel_conteudo {
  // background: #dcdddf;
-  height: 100%;
-  width: 85%;
+  height: auto;
+  width: 95%;
   float: left;
   display: inline-block;
-  margin-left: 240px;  
+  margin-left: 40px;  
+  
   .overflow-x {
     overflow-x: scroll;
   }
