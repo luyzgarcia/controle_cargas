@@ -217,15 +217,17 @@ header {
   background: #dcdddf;
   
 }
+.navbar {
+  margin-bottom: 0 !important;
+}
 
 #painel_conteudo {
  // background: #dcdddf;
-  height: auto;
-  width: 95%;
+  height: 100%;
+  width: 85%;
   float: left;
   display: inline-block;
-  margin-left: 40px;  
-  
+  margin-left: 240px;  
   .overflow-x {
     overflow-x: scroll;
   }

@@ -79,7 +79,24 @@
 	
 	
 	
-	
+	<div id="painel_esquerdo">
+		<div class="info_user">
+			<% if !current_user.nil? %>
+			<span class="img_avatar">
+				<%= image_tag 'toledoexpress.jpg' %>
+			</span>
+			<span class="user_name">
+				<%=  current_user.nome  %>
+			</span>
+			<span class="user_perfil">
+				<%= %>
+			</span>
+			<span class="ultima_visita">
+				Ultima visita: <%= current_user.last_sign_in_at %>
+			</span>
+			<% end %>
+		</div>
+	</div>
 	<div id="painel_conteudo">
 		<br/>
 		
