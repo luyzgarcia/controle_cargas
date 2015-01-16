@@ -47,7 +47,7 @@
 	        		<td><%= reg.destinatario %></td>
 	        		<td><%= reg.destinatario_cidade %></td>
 	        		<td><%= 
-	        				valores[:comissao] = valores[:comissao] + reg.valor_redespacho if reg.valor_redespacho
+	        				valores[:comissao] = valores[:comissao] + reg.valor_comissao if reg.valor_comissao
 	        				'R$' + reg.valor_comissao.to_s if reg.valor_comissao 
 	        			%></td>
 	        		<td><%= 
