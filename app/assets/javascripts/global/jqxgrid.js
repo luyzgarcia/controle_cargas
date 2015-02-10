@@ -1,0 +1,15 @@
+//= require jqwidgets/jqxcore
+//= require jqwidgets/jqxdata
+//= require jqwidgets/jqxtabs
+//= require jqwidgets/jqxbuttons
+//= require jqwidgets/jqxscrollbar
+//= require jqwidgets/jqxmenu
+//= require jqwidgets/jqxcheckbox
+//= require jqwidgets/jqxlistbox
+//= require jqwidgets/jqxdropdownlist
+//= require jqwidgets/jqxgrid
+//= require jqwidgets/jqxgrid.sort
+//= require jqwidgets/jqxgrid.pager
+//= require jqwidgets/jqxgrid.selection
+//= require jqwidgets/jqxgrid.edit
+//= require jqwidgets/jqxwindow

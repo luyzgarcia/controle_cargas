@@ -20,9 +20,10 @@
 //= require bootstrap-datepicker.js
 //= require tooltip.js
 //= require validator.js
-//= require_tree .
+//= require jqwidgets/jqx-all
+// require_tree ../../../vendor/assets/javascripts/.
+// require jqxgrid
+//= require empresas
+// require_tree ./global
 
-$(function () {
-    //console.log('iniciando tooltip...');
-    //$('[data-toggle="tooltip"]').tooltip();
-})
+
