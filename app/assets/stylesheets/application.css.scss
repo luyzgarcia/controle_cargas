@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jqx.base 
  */
 @import '_botoes.scss';
 
@@ -43,16 +44,43 @@ header {
   width: 100%;
   margin: -55px 0 0;
   z-index: 99999;
-  padding: 5px 0px;
-  background: -webkit-linear-gradient(top, #8cc53e, #75ae27);
-  background: -linear-gradient(top, #8cc53e, #75ae27);
-  background: -moz-linear-gradient(top, #8cc53e, #75ae27);
-  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
+  //padding: 5px 0px;
+  background: #000;
+  //background: -webkit-linear-gradient(top, #8cc53e, #75ae27);
+  //background: -linear-gradient(top, #8cc53e, #75ae27);
+  //background: -moz-linear-gradient(top, #8cc53e, #75ae27);
+  //box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.2);
   div {
     display: inline-block;
   }
   .esquerda {
-    margin-left: 20px;
+    //margin-left: 20px;
+    .navbar {
+      background: none;
+      color: #fff;
+      border: none;
+      min-height: 40px;
+      .container-fluid {
+        margin: 0;
+        padding: 0;
+      }
+      li>a {
+        padding: 10px 0;
+        margin: 5px 0 -5px 15px;
+        font: normal 10pt 'Droid Sans', Tahoma;
+        color: #fff;
+      }
+      li>a:hover {
+        color: rgba(205, 205, 205, 1); 
+      }
+      .open>a {
+        background: none;
+        color: rgba(205, 205, 205, 1);
+      }
+      .dropdown-menu {
+        background: #000;
+      }
+    }
   
     img {
       width: 90px;
@@ -61,8 +89,8 @@ header {
     }
     .titulo {
       //float:left;
-      font: normal 10pt 'nexa_bold', Tahoma;
-      color: #004961;
+      font: normal 10pt 'Droid Sans', Tahoma;
+      color: #fff;
       display: inline-block;
       margin: 15px 10px;
       line-height: 15px;
@@ -71,10 +99,15 @@ header {
   .direita {
     padding: 10px 20px;
     float: right;
+    p {
+      display: inline;
+      font: normal 10pt 'Droid Sans', Tahoma;
+      color: #fff;
+    }
     ul {
       display: inline-block;
       text-align: center;
-      background: #8fd233;
+      background: #fff image-url("listras_menu.png") no-repeat 50% 10px;
       width: 25px;
       margin: 0 10px;
       height: 25px;
@@ -87,7 +120,7 @@ header {
       }
     } 
     ul:hover {
-      background: #004961;
+      background: #004961 image-url("listras_menu.png") no-repeat 50% -5px;;
     }
     ul > div {
       background: #fff;
@@ -118,8 +151,8 @@ header {
       right: 15px;
     }
     a {
-      font: normal 10pt 'nexa_bold', Tahoma;
-      color: #004961;
+      font: normal 10pt 'Droid Sans', Tahoma;
+      color: #fff;
       text-decoration: none;
     }
   }
@@ -224,10 +257,12 @@ header {
 #painel_conteudo {
  // background: #dcdddf;
   height: 100%;
-  width: 85%;
+  //width: 85%;
   float: left;
   display: inline-block;
-  margin-left: 240px;  
+  margin: 0 1.5%;
+  width: 97%;
+  //margin-left: 240px;  
   .overflow-x {
     overflow-x: scroll;
   }
