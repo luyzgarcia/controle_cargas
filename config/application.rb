@@ -23,8 +23,8 @@ module ControleCargas
     # Do not swallow errors in after_commit/after_rollback callbacks.
     
     #config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images')
-    config.assets.precompile += %w(.svg .eot .woff .ttf .png empresas.js ')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images', 'javascripts')
+    config.assets.precompile += %w(.svg .eot .woff .ttf .png empresas.js redespachos.js')
     
     config.active_record.raise_in_transactional_callbacks = true
     config.to_prepare do

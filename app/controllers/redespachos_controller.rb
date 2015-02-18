@@ -1,9 +1,16 @@
 class RedespachosController < ApplicationController
-  before_action :carrega_lista
+  before_action :carrega_lista, only: [:index]
+  
+  respond_to :html, :xml, :json
   
   def index
     #@registros = Redespacho.all
     @redespacho = Redespacho.new 
+    #respond_with(@registros)
+    respond_to do |format|
+      format.html
+      format.json {render :json => @registros.to_json(:include => [:empresa])}
+    end
   end
   
   def show
@@ -25,11 +32,15 @@ class RedespachosController < ApplicationController
   def create
     begin
       @redespacho = Redespacho.new(redespacho_params)
+      logger.debug redespacho_params
+      logger.debug @redespacho
       
       respond_to do |format|
         if @redespacho.save
+          format.json {render :json => @redespacho.to_json(:include => [:empresa])}
           format.html {redirect_to redespachos_path, notice: 'Redespacho salvo com sucesso!'}
         else
+          format.json
           format.html {redirect_to redespachos_path, notice: 'Nem todos os campos foram preenchidos!'}
         end
       end
@@ -42,9 +53,11 @@ class RedespachosController < ApplicationController
   
   def update
     @redespacho = Redespacho.find(params[:id])
+    
     if(@redespacho.update(redespacho_params))
       respond_to do |format|
         format.html {redirect_to redespachos_path, notice: 'Redespacho atualizado com sucesso!'}
+        format.json {render json:@redespacho}
       end
     else
       respond_to do |format|
@@ -95,15 +108,16 @@ class RedespachosController < ApplicationController
   private
   
   def carrega_lista
-    @registros = initialize_grid(Redespacho, 
-      include: :empresa,
-      :order => 'redespachos.created_at',
-      :order_direction => 'desc',
-      :per_page => 30,
-      :custom_order => {
-        'redespachos.empresa_id' => 'empresas.nome'
-      }
-      )
+    #@registros = initialize_grid(Redespacho, 
+    #  include: :empresa,
+    #  :order => 'redespachos.created_at',
+    #  :order_direction => 'desc',
+    #  :per_page => 30,
+    #  :custom_order => {
+    #    'redespachos.empresa_id' => 'empresas.nome'
+    #  }
+    #  )
+    @registros = Redespacho.all.order(:created_at)
   end
   
   def redespacho_params

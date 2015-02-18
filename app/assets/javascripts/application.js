@@ -17,13 +17,17 @@
 //= require wice_grid
 //= require jquery.maskMoney.min.js
 //= require inputmask.js
-//= require bootstrap-datepicker.js
+// require bootstrap-datepicker.js
 //= require tooltip.js
 //= require validator.js
 //= require jqwidgets/jqx-all
+//= require jqwidgets/localization
+//= require jqwidgets/globalize
+//= require jqwidgets/globalize.culture.pt-BR
 // require_tree ../../../vendor/assets/javascripts/.
 // require jqxgrid
-//= require empresas
+// require empresas
+// require redespachos
 // require_tree ./global
 
 

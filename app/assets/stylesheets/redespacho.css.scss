@@ -15,3 +15,23 @@
 #ui-datepicker-div {
   z-index: 9 !important;
 }
+
+table {
+  tr {
+    //height: 45px;
+  }
+  td {
+    word-break: break-word;
+    //width: 100px;
+    .input_class {
+      min-height: 25px !important;
+    }
+  }
+}
+
+
+.botoes_grid {
+  input {
+    margin: 0 5px;
+  }
+}
