@@ -24,9 +24,9 @@ $(document).ready(function() {
 var grid = '';
 
 function geraGrid(div) {
-	  
-	grid = div;
-	var url = "/redespachos.json";
+    grid = div;
+    
+    var url = "/redespachos.json";
 	var source = {
 		datatype: "json",
 		datafields: [
@@ -94,7 +94,7 @@ function geraGrid(div) {
 	  			$("#new_register_window").jqxWindow({
   		 			title: 'Novo Redespacho'
   		 		});
-  		 		$( "#new_register" ).unbind( "submit");
+  		 		$( "#new_register" ).unbind("submit");
   		 		$('#new_register').submit(function() {
   		 		    $.ajax({
                       type: "POST",
@@ -145,7 +145,6 @@ function geraGrid(div) {
                   }, buttonclick: function (row) {
                     var dataRecord = $(div).jqxGrid('getrowdata', row);
                     editar_registro(dataRecord);
-                      
                   }
             },
 		    {text: 'Codigo', columngroup: 'dados', datafield: 'id', width: '100px', editable: false},
@@ -479,7 +478,6 @@ function atualiza_servidor(dados) {
       url: "/redespachos/"+dados['id'],
       data: {redespacho: dados['dados']},
       success: function(event, request, settings ) {
-             
           },
           error: function(e){
               
@@ -541,13 +539,15 @@ function editar_registro(dataRecord) {
           url: "/redespachos/"+dataRecord.id,
           data: $('#new_register').serialize(),
           success: function(event, request, settings ) {
+              return false;
           },
           error: function(e){
-              
+              return false;
           }
         });
+       
        $("#new_register_window").jqxWindow('hide');
-       $(div).jqxGrid('updatebounddata');
+       $(grid).jqxGrid('updatebounddata');
        $("#new_register_window input[type='text']").val('');
        return false;                   
     });
