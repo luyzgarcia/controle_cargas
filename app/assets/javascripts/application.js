@@ -22,7 +22,7 @@
 //= require validator.js
 //= require jqwidgets/jqx-all
 //= require jqwidgets/localization
-// require jqwidgets/globalize
+//= require jqwidgets/globalize
 //= require jqwidgets/globalize.culture.pt-BR
 // require_tree ../../../vendor/assets/javascripts/.
 // require jqxgrid

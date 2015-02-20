@@ -13,12 +13,8 @@
 
 .DS_Store
 
-config/initializers/wicked_pdf.rb
-
-config/initializers/wicked_pdf.rb
-
-config/initializers/wicked_pdf.rb
-
 vendor/assets/.DS_Store
 
 vendor/assets/.DS_Store
+
+config/initializers/wicked_pdf.rb
