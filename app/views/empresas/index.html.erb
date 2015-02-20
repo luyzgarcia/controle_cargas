@@ -1,121 +1,71 @@
 <%= javascript_include_tag 'empresas' %>
 
-
-<div id="grid_empresas">
+<section class="content-header">
+	Empresas           
+</section>
+<section class="content">
+	<h4 class="page-header">
+        Gerenciar empresas
+        <small>Aqui você tem acesso a todas as empresas cadastradas, para editar clique duas vezes sobre um campo, ele irá salvar quando voce apertar <code>Enter</code></small>
+    </h4>
 	
-</div>
-
-<script>
- 
-</script>
-<div id='nova_empresa_window' class="jqx-widget-content, jqx-input, jqx-widget, jqx-rc-all">
-	<div>
-	<%= form_for(@empresa, :remote => true, :html => { :role => "form", :class =>"form-horizontal"}) do |f| %>
-	  <% if @empresa.errors.any? %>
-	    <div id="error_explanation">
-		  <div class="alert alert-danger" role="alert">
-		  	<strong>Erro salvar empresa:</strong>
-		  	<br/><br/>
-		    <ul>
-		    	<% @empresa.errors.full_messages.each do |message| %>
-		        	<li><%= message %></li>
-		      	<% end %>
-		    </ul>
-		   </div>
-	    </div>
-	  <% end %>
-		<div class="">
-            <div style="overflow: hidden;">
-			<table>
-                <tr>
-                    <td align="right">Nome</td>
-                    <td align="left"><%= f.text_field :nome, :class => "input_class" %></td>
-                </tr>
-                <tr>
-                    <td align="right">Razção social</td>
-                    <td align="left"><%= f.text_field :razao_social, :class => 'input_class' %></td>
-                </tr>
-                <tr>
-                    <td align="right">CNPJ</td>
-                    <td align="left"><%= f.text_field :cnpj, :class => 'input_class', :data =>{:mask =>"99.999.999/9999-99"} %></td>
-                </tr>
-                <tr>
-                    <td align="right">Telefone</td>
-                    <td align="left"><%= f.text_field :telefone, :class => 'input_class', :data =>{:mask =>"(999)9999-9999?9"} %></td>
-                </tr>
-                <tr>
-                    <td align="right">Responsavel</td>
-                    <td align="left"><%= f.text_field :responsavel, :class => 'input_class' %></td>
-                </tr>
-                <tr>
-                	<td align="right"></td>
-                    <td style="padding-top: 10px;" align="right">
-                		<%= f.submit 'Salvar', :id => 'Save', :class => "" %>
-						<%= link_to 'Cancelar', '#', :id => 'Cancel', :class => "btn_fechar" %>
-					</td>
-               	</tr>
-            </table>
-			
-		  	
-		</div>
-		<!-- 
-		<div class="form_wrapper">
-			<div class="form_item">
-				<%= f.label :email, 'Email' %>
-				<%= f.text_field :email %>
-		  	</div>
-		  	
-		  	<div class="form_item">	
-		  		<%= f.label :estado, 'Estado'%>
-				<%= f.select(:estado, options_for_select([['Acre','AC'],
-					['Alagoas','AL'],
-					['Amazonas','AM'],
-					['Amapá','AP'],
-					['Bahia','BA'],
-					['Ceará','CE'],
-					['Distrito Federal','DF'],
-					['Espírito Santo','ES'],
-					['Goiás','GO'],
-					['Maranhão','MA'],
-					['Minas Gerais','MG'],
-					['Mato Grosso do Sul','MS'],
-					['Mato Grosso','MT'],
-					['Pará','PA'],
-					['Paraíba','PB'],
-					['Pernambuco','PE'],
-					['Piauí','PI'],
-					['Paraná','PR'],
-					['Rio de Janeiro','RJ'],
-					['Rio Grande do Norte','RN'],
-					['Rondônia','RO'],
-					['Roraima','RR'],
-					['Rio Grande do Sul','RS'],
-					['Santa Catarina','SC'],
-					['Sergipe','SE'],
-					['São Paulo','SP'],
-					['Tocantins','TO']], selected: @empresa.estado),{ }) %>
-		  	</div>
-		  	
-		  	<div class="form_item">
-				<%= f.label :cidade, 'Cidade' %>
-				<%= f.text_field :cidade %>			
-		  	</div>
-		  	
-		  	<div class="form_item">
-				<%= f.label :observacao, 'Observação' %>
-				<%= f.text_area :observacao%>			
-		  	</div>
-		  	
-		  	<div class="form_item">
-						
-		  	</div>
-		</div>
+	<div id="grid_empresas">
 		
-	  <div class="actions">
-	    <%= f.submit 'Salvar', :class => "btn btn-success" %>
-		<%= link_to 'Cancelar', '#',  :class => "btn_fechar btn btn-danger" %>
-	  </div>-->
-	<% end %>
 	</div>
 	
-</div>
+	<script>
+	 
+	</script>
+	<div id='nova_empresa_window' class="jqx-widget-content, jqx-input, jqx-widget, jqx-rc-all">
+		<div>
+		<%= form_for(@empresa, :remote => true, :html => { :role => "form", :class =>"form-horizontal"}) do |f| %>
+		  <% if @empresa.errors.any? %>
+		    <div id="error_explanation">
+			  <div class="alert alert-danger" role="alert">
+			  	<strong>Erro salvar empresa:</strong>
+			  	<br/><br/>
+			    <ul>
+			    	<% @empresa.errors.full_messages.each do |message| %>
+			        	<li><%= message %></li>
+			      	<% end %>
+			    </ul>
+			   </div>
+		    </div>
+		  <% end %>
+			<div class="">
+	            <div style="overflow: hidden;">
+					<table>
+		                <tr>
+		                    <td align="right">Nome</td>
+		                    <td align="left"><%= f.text_field :nome, :class => "input_class" %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Razção social</td>
+		                    <td align="left"><%= f.text_field :razao_social, :class => 'input_class' %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">CNPJ</td>
+		                    <td align="left"><%= f.text_field :cnpj, :class => 'input_class', :data =>{:mask =>"99.999.999/9999-99"} %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Telefone</td>
+		                    <td align="left"><%= f.text_field :telefone, :class => 'input_class', :data =>{:mask =>"(999)9999-9999?9"} %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Responsavel</td>
+		                    <td align="left"><%= f.text_field :responsavel, :class => 'input_class' %></td>
+		                </tr>
+		                <tr>
+		                	<td align="right"></td>
+		                    <td style="padding-top: 10px;" align="right">
+		                		<%= f.submit 'Salvar', :id => 'Save', :class => "" %>
+								<%= link_to 'Cancelar', '#', :id => 'Cancel', :class => "btn_fechar" %>
+							</td>
+		               	</tr>
+		            </table>
+				</div>
+			<% end %>
+			</div>
+		</div>
+	</div>
+</section>

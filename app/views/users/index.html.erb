@@ -1,3 +1,15 @@
-<%= link_to 'Novo usuario', new_user_path, :class => 'btn btn-success' %>
 
-<%= render 'registros' %>
+<section class="content-header">
+	Usuários           
+</section>
+<section class="content">
+	
+	<h4 class="page-header">
+        Gerenciar usuários
+        <small>Aqui você tem acesso a todas as empresas cadastrados, todos os usuarios terão acesso a todo o sistema</small>
+    </h4>
+	<%= link_to 'Novo usuario', new_user_path, :class => 'btn btn-success' %>
+	
+	<%= render 'registros' %>
+
+</section>

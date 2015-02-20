@@ -1,123 +1,132 @@
 <%= javascript_include_tag 'redespachos' %>  
 
-<h1>Controle de Cargas</h1>
-<br/>
-
-<div id="grid_redespachos">
+<section class="content-header">
+	Controle de Cargas            
+</section>
 	
-</div>
-
-<div class="edit_area">
-</div>
-
-<div id="new_register_window">
-	<div>
-	<%= form_for(@redespacho, :remote => true, :html => {:id => 'new_register', :role => "form", :class =>"form-horizontal"}) do |f| %>
-	  <% if @redespacho.errors.any? %>
-	    <div id="error_explanation">
-		  <div class="alert alert-danger" role="alert">
-		  	<strong>Erro salvar empresa:</strong>
-		  	<br/><br/>
-		    <ul>
-		    	<% @redespacho.errors.full_messages.each do |message| %>
-		        	<li><%= message %></li>
-		      	<% end %>
-		    </ul>
-		   </div>
-	    </div>
-	  <% end %>
-	  
-		<div class="">
-            <div style="overflow: hidden;">
-			<table>
+<section class="content">
+	<h4 class="page-header">
+        Controle de cargas
+        <small>Aqui você tem acesso a todas os registros, para editar clique duas vezes sobre um campo, ele irá salvar quando voce apertar <code>Enter</code></small>
+    </h4>
+	
+	<div id="grid_redespachos">
+		
+	</div>
+	
+	<div class="edit_area">
+	</div>
+	
+	<div id="new_register_window">
+		<div>
+		<%= form_for(@redespacho, :remote => true, :html => {:id => 'new_register', :role => "form", :class =>"form-horizontal"}) do |f| %>
+		  <% if @redespacho.errors.any? %>
+		    <div id="error_explanation">
+			  <div class="alert alert-danger" role="alert">
+			  	<strong>Erro salvar empresa:</strong>
+			  	<br/><br/>
+			    <ul>
+			    	<% @redespacho.errors.full_messages.each do |message| %>
+			        	<li><%= message %></li>
+			      	<% end %>
+			    </ul>
+			   </div>
+		    </div>
+		  <% end %>
+		  
+			<div class="">
+	            <div style="overflow: hidden;">
+				<table>
+					
+		                <tr>
+		                    <td align="right">Status</td>
+		                    <td align="left"><%= f.select :status, options_for_select([['Em Andamento','AND'],['Finalizado', 'FIN']], selected: @redespacho.status), {}, :class =>"combo" %></td>
+		                
+		                    <td align="right">Empresa</td>
+		                    <td align="left"><%= f.collection_select :empresa_id ,Empresa.all, :id,:nome,{:include_blank => 'Selecione...'}, {:class => 'combo input_class'} %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Remetente</td>
+		                    <td align="left"><%= f.text_field :remetente, :class => "input_class" %></td>
+		                
+		                    <td align="right">Cidade do remetente</td>
+		                    <td align="left"><%= f.text_field :remetente_cidade, :class => "input_class" %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Tipo</td>
+		                    <td align="left"><%= f.select :tipo_redespacho, options_for_select([['Entrega','ENT'],['Coleta', 'COL'],['Redespacho', 'RED'],['Outros', 'OUT']], selected: @redespacho.tipo_redespacho), {}, :class =>"combo " %></td>
+		                
+		                    <td align="right">Destinatario</td>
+		                    <td align="left"><%= f.text_field :destinatario, :class => "input_class" %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Cidade do destinatario</td>
+		                    <td align="left"><%= f.text_field :destinatario_cidade, :class => "input_class" %></td>
+		                
+		                    <td align="right">Valor frete</td>
+		                    <div style='margin-top: 3px;' id='percentageInput'>
+		                    <td align="left"><%= f.text_field :valor_frete, :class => "input_class currency" %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Valor redespacho</td>
+		                    <td align="left"><%= f.text_field :valor_redespacho , :class => 'input_class currency' %></td>
+		                
+		                    <td align="right">Valor de comissão</td>
+		                    <td align="left"><%= f.text_field :valor_comissao, :class => "input_class currency" %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Forma de Pagamento</td>
+		                    <td align="left"><%= f.select :forma_pagamento, options_for_select([['Boleto'],['Dinheiro'],['A Vista'],['A Prazo'],['Depósito'],['Cartão de crédito'],['Cheque'], ['Pago']], selected: @redespacho.forma_pagamento), {}, :class =>"combo " %></td>
+		                
+		                    <td align="right">Volume</td>
+		                    <td align="left"><%= f.text_field :volume, :class => "input_class" %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">Peso</td>
+		                    <td align="left"><%= f.text_field :peso, :class => "input_class decimal" %></td>
+		                
+		                    <td align="right">NF - Valor</td>
+		                    <td align="left"><%= f.text_field :nf_valor, :class => "input_class currency" %></td>
+		                </tr>
+		                <tr>
+		                    <td align="right">NF - Número</td>
+		                    <td align="left"><%= f.text_field :nf_numero, :class => "input_class" %></td>
+		                    
+		                    <td align="right">Recebido por</td>
+		                    <td align="left"><%= f.text_field :recebido_por, :class => "input_class" %></td>                    
+		                </tr>
+		                <tr>
+		                    <td align="right">Data de envio</td>
+		                    <td align="left"><div class="calendar" id='redespacho_data_envio' name='redespacho[data_envio]'></div></td>
+		                    
+		                    <td align="right">Data de entrega</td>
+		                    <td align="left"><div class="calendar" id='redespacho_data_entrega' name='redespacho[data_entrega]'</td>                    
+		                </tr>
+		                <tr>
+		                	<td align="right">JadLog Número da lista</td>
+		                    <td align="left"><%= f.text_field :jadlog_lista_numero, :class => "input_class" %></td>
+		                    	
+		                	
+		                    <td align="right">JadLog Número de conhecimento</td>
+		                    <td align="left"><%= f.text_field :jadlog_conhecimento_numero, :class => "input_class" %></td>
+		                
+		                </tr>
+		                
+	                <tr>
+	                	<td align="right"></td>
+	                	<td align="right"></td>
+	                	<td align="right"></td>
+	                    <td style="padding-top: 10px;" align="right">
+	                		<%= f.submit 'Salvar', :id => 'Save', :class => "" %>
+							<%= link_to 'Cancelar', '#', :id => 'Cancel', :class => "btn_fechar" %>
+						</td>
+	               	</tr>
+	            </table>
 				
-	                <tr>
-	                    <td align="right">Status</td>
-	                    <td align="left"><%= f.select :status, options_for_select([['Em Andamento','AND'],['Finalizado', 'FIN']], selected: @redespacho.status), {}, :class =>"combo" %></td>
-	                
-	                    <td align="right">Empresa</td>
-	                    <td align="left"><%= f.collection_select :empresa_id ,Empresa.all, :id,:nome,{:include_blank => 'Selecione...'}, {:class => 'combo input_class'} %></td>
-	                </tr>
-	                <tr>
-	                    <td align="right">Remetente</td>
-	                    <td align="left"><%= f.text_field :remetente, :class => "input_class" %></td>
-	                
-	                    <td align="right">Cidade do remetente</td>
-	                    <td align="left"><%= f.text_field :remetente_cidade, :class => "input_class" %></td>
-	                </tr>
-	                <tr>
-	                    <td align="right">Tipo</td>
-	                    <td align="left"><%= f.select :tipo_redespacho, options_for_select([['Entrega','ENT'],['Coleta', 'COL'],['Redespacho', 'RED'],['Outros', 'OUT']], selected: @redespacho.tipo_redespacho), {}, :class =>"combo " %></td>
-	                
-	                    <td align="right">Destinatario</td>
-	                    <td align="left"><%= f.text_field :destinatario, :class => "input_class" %></td>
-	                </tr>
-	                <tr>
-	                    <td align="right">Cidade do destinatario</td>
-	                    <td align="left"><%= f.text_field :destinatario_cidade, :class => "input_class" %></td>
-	                
-	                    <td align="right">Valor frete</td>
-	                    <div style='margin-top: 3px;' id='percentageInput'>
-	                    <td align="left"><%= f.text_field :valor_frete, :class => "input_class currency" %></td>
-	                </tr>
-	                <tr>
-	                    <td align="right">Valor redespacho</td>
-	                    <td align="left"><%= f.text_field :valor_redespacho , :class => 'input_class currency' %></td>
-	                
-	                    <td align="right">Valor de comissão</td>
-	                    <td align="left"><%= f.text_field :valor_comissao, :class => "input_class currency" %></td>
-	                </tr>
-	                <tr>
-	                    <td align="right">Forma de Pagamento</td>
-	                    <td align="left"><%= f.select :forma_pagamento, options_for_select([['Boleto'],['Dinheiro'],['A Vista'],['A Prazo'],['Depósito'],['Cartão de crédito'],['Cheque'], ['Pago']], selected: @redespacho.forma_pagamento), {}, :class =>"combo " %></td>
-	                
-	                    <td align="right">Volume</td>
-	                    <td align="left"><%= f.text_field :volume, :class => "input_class" %></td>
-	                </tr>
-	                <tr>
-	                    <td align="right">Peso</td>
-	                    <td align="left"><%= f.text_field :peso, :class => "input_class decimal" %></td>
-	                
-	                    <td align="right">NF - Valor</td>
-	                    <td align="left"><%= f.text_field :nf_valor, :class => "input_class currency" %></td>
-	                </tr>
-	                <tr>
-	                    <td align="right">NF - Número</td>
-	                    <td align="left"><%= f.text_field :nf_numero, :class => "input_class" %></td>
-	                    
-	                    <td align="right">Recebido por</td>
-	                    <td align="left"><%= f.text_field :recebido_por, :class => "input_class" %></td>                    
-	                </tr>
-	                <tr>
-	                    <td align="right">Data de envio</td>
-	                    <td align="left"><div class="calendar" id='redespacho_data_envio' name='redespacho[data_envio]'></div></td>
-	                    
-	                    <td align="right">Data de entrega</td>
-	                    <td align="left"><div class="calendar" id='redespacho_data_entrega' name='redespacho[data_entrega]'</td>                    
-	                </tr>
-	                <tr>
-	                	<td align="right">JadLog Número da lista</td>
-	                    <td align="left"><%= f.text_field :jadlog_lista_numero, :class => "input_class" %></td>
-	                    	
-	                	
-	                    <td align="right">JadLog Número de conhecimento</td>
-	                    <td align="left"><%= f.text_field :jadlog_conhecimento_numero, :class => "input_class" %></td>
-	                
-	                </tr>
-	                
-                <tr>
-                	<td align="right"></td>
-                	<td align="right"></td>
-                	<td align="right"></td>
-                    <td style="padding-top: 10px;" align="right">
-                		<%= f.submit 'Salvar', :id => 'Save', :class => "" %>
-						<%= link_to 'Cancelar', '#', :id => 'Cancel', :class => "btn_fechar" %>
-					</td>
-               	</tr>
-            </table>
-			
-		  	
-		</div>
-	</div
-	<% end %>
-</div>
+			  	
+			</div>
+		</div
+		<% end %>
+	</div>
+
+</section>

@@ -14,6 +14,7 @@
  *= require_self
  *= require jqx.base
  *= require jqx.arctic  
+ *= require theme/AdminLTE
  */
 @import '_botoes.scss';
 
@@ -39,7 +40,7 @@ body {
 }
 
 
-header {
+/*header {
   //text-align: right;
   position: fixed;
   width: 100%;
@@ -158,7 +159,7 @@ header {
     }
   }
 }
-
+*/
 #painel_esquerdo {
   position: absolute;
   background: #e6e7e8;

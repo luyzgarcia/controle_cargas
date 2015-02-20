@@ -22,6 +22,8 @@ module ControleCargas
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     
+    config.i18n.default_locale = :'pt-BR'
+    
     #config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images', 'javascripts')
     config.assets.precompile += %w(.svg .eot .woff .ttf .png empresas.js redespachos.js')
@@ -30,6 +32,11 @@ module ControleCargas
     config.to_prepare do
       Devise::SessionsController.layout "log_in"
     end
+    
+    
+    #Less
+    config.less.paths << "#{Rails.root}/vendor/assets/stylesheets/theme/less"
+    config.less.compress = true
     
     #config.assets.enabled = true
     #config.assets.initialize_on_precompile = true

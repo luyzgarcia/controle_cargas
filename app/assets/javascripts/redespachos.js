@@ -139,6 +139,7 @@ function geraGrid(div) {
 		editable: true,
         selectionmode: 'singlerow',
         editmode: 'dblclick',
+        enablemousewheel: false,
 		columns: [
 		    { text: 'Editar', datafield: 'Edit', columntype: 'button', width: '100px',align:'center', cellsrenderer: function () {
                      return "Editar";

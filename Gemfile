@@ -64,3 +64,13 @@ gem 'obfuscate_id', :git => 'https://github.com/namick/obfuscate_id.git'
 #PDF generator
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+
+gem 'libv8'
+
+#Less
+gem 'less-rails'
+gem 'therubyracer'
+
+#paperclick - upload de imagens
+gem 'paperclip', github: 'thoughtbot/paperclip'

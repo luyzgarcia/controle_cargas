@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'gerar_pdf_relatorio' => 'relatorios#gerar_pdf'
   get 'relatorio_contas_a_pagar' => 'relatorios#relatorio_contas_a_pagar'
   get 'relatorio_contas_a_receber' => 'relatorios#relatorio_contas_a_receber'
-  root 'redespachos#index'
+  root 'dashboard#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

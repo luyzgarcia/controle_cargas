@@ -12,4 +12,4 @@ Rails.application.config.assets.version = '1.0'
 #Rails.application.config.assets.paths << Emoji.images_path
 
 Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images', 'javascripts')
-Rails.application.config.assets.precompile += %w( empresas.js redespachos.js *.png )
+Rails.application.config.assets.precompile += %w(log_in.css *.css empresas.js redespachos.js *.png *.js )
