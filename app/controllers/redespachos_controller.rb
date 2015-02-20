@@ -71,6 +71,7 @@ class RedespachosController < ApplicationController
     respond_to do |format|
       if @redespacho.destroy
         format.html {redirect_to redespachos_path, notice: 'Registro excluido!'}
+        format.json
       else
         format.html {redirect_to redespachos_path, notice: 'Erro ao excluir registro!'} 
       end

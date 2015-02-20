@@ -141,6 +141,14 @@ function geraGrid(div) {
         editmode: 'dblclick',
         enablemousewheel: false,
 		columns: [
+		      { text: 'Excluir', datafield: 'Excluir', columntype: 'button', width: '100px',align:'center', cellsrenderer: function () {
+                     return "Excluir";
+                  }, buttonclick: function (row) {
+                      
+                    var dataRecord = $(div).jqxGrid('getrowdata', row);
+                    excluir_registro(dataRecord);
+                  }
+            },
 		    { text: 'Editar', datafield: 'Edit', columntype: 'button', width: '100px',align:'center', cellsrenderer: function () {
                      return "Editar";
                   }, buttonclick: function (row) {
@@ -487,6 +495,20 @@ function atualiza_servidor(dados) {
    $(grid).jqxGrid('updatebounddata');
 }
 
+function excluir_registro(dataRecord) {
+    console.log(dataRecord);
+    $.ajax({
+      type: "DELETE",
+      url: "/redespachos/"+dataRecord.id,
+      success: function(event, request, settings ) {
+          },
+          error: function(e){
+              
+          }
+        });
+   $(grid).jqxGrid('updatebounddata');
+    
+}
 function editar_registro(dataRecord) {
     var status_index = $('#redespacho_status_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.status);
     $('#redespacho_status_jqxComboBox').jqxComboBox({selectedIndex: status_index.index});

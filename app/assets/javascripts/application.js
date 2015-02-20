@@ -25,6 +25,12 @@
 //= require jqwidgets/globalize
 //= require jqwidgets/globalize.culture.pt-BR
 // require_tree ../../../vendor/assets/javascripts/.
+// require_tree ../../../vendor/assets/javascripts/theme/AdminLTE/plugins/.
+//= require_tree ../../../vendor/assets/javascripts/theme/AdminLTE/plugins/morris/.
+//= require_tree ../../../vendor/assets/javascripts/theme/AdminLTE/plugins/sparkline/.
+//= require_tree ../../../vendor/assets/javascripts/theme/AdminLTE/plugins/jvectormap/.
+//= require_tree ../../../vendor/assets/javascripts/theme/AdminLTE/plugins/datepicker/.
+//= require_tree ../../../vendor/assets/javascripts/theme/AdminLTE/plugins/daterangepicker/.
 // require jqxgrid
 // require empresas
 // require redespachos
