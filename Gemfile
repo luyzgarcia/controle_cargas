@@ -69,8 +69,8 @@ gem 'wkhtmltopdf-binary'
 gem 'libv8'
 
 #Less
-gem 'less-rails'
-gem 'therubyracer'
+#gem 'less-rails'
+#gem 'therubyracer'
 
 #paperclick - upload de imagens
 gem 'paperclip', github: 'thoughtbot/paperclip'

@@ -35,8 +35,8 @@ module ControleCargas
     
     
     #Less
-    config.less.paths << "#{Rails.root}/vendor/assets/stylesheets/theme/less"
-    config.less.compress = true
+    #config.less.paths << "#{Rails.root}/vendor/assets/stylesheets/theme/less"
+    #config.less.compress = true
     
     #config.assets.enabled = true
     #config.assets.initialize_on_precompile = true
