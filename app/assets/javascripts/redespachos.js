@@ -80,7 +80,7 @@ function geraGrid(div) {
 		autoheight: true,
 		sortable: true,
 		altrows: true,
-		pagesize: 50,
+		pagesize: 20,
 		showtoolbar: true,
 		theme: theme,
 		rendertoolbar: function (toolbar) {
@@ -480,7 +480,8 @@ function geraGrid(div) {
     //$("#Save").jqxButton({ theme: 'arctic' });
     //$(".input_class").jqxInput({ theme: theme });
     $(".combo").jqxComboBox({ theme: theme });
-    $(".currency").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:','});
+    $(".dinheiro").maskMoney({prefix:'R$ ',affixesStay:false, allowNegative: true, thousands:'.', decimal:'.'});
+    //$(".currency").maskMoney({ allowNegative: true, thousands:'.', decimal:','});
     $(".calendar").jqxDateTimeInput({theme: theme, culture: 'pt-BR'});
 }
 
