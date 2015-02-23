@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  *= require jqx.base
- *= require jqx.arctic  
+ *= require jqx.arctic
+ *= require jqx.bootstrap  
+ *= require jqx.energyblue    
  *= require theme/AdminLTE
  */
 @import '_botoes.scss';

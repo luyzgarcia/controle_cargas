@@ -1,11 +1,11 @@
-var theme = 'arctic';
+var theme = 'energyblue';
 
 $(document).ready(function() {
 	geraGrid($("#grid_redespachos"));	
 	
 	
 	$('#new_register_window').jqxWindow({
-	     theme: 'arctic',
+	     theme: theme,
 	     autoOpen: false,
 	     position: {
 				x:  60, 
@@ -13,8 +13,10 @@ $(document).ready(function() {
 			},
 		showCollapseButton: false,
 		resizable: false, 
-		height: 430, 
-		width: 730,
+		height: 690, 
+		width: 1400,
+		maxWidth: 1400,
+		maxHeight: 690,
 		isModal: true,
 		dragArea: { left: 0, top: 45, width: 0, height: 0 }
 	 });
@@ -80,12 +82,13 @@ function geraGrid(div) {
 		altrows: true,
 		pagesize: 50,
 		showtoolbar: true,
+		theme: theme,
 		rendertoolbar: function (toolbar) {
 			var me = this;
 			var container = $("<div class='botoes_grid' style='margin: 5px'></div>");
 			toolbar.append(container);
 			container.append("<input id='addnewregister' class='addnewregister' type='button' value='Nova Redespacho' />");
-	  		$('.addnewregister').jqxButton();
+	  		$('.addnewregister').jqxButton({theme: theme});
 	  		$(".addnewregister").on('click', function () {
 	  		    console.log('vai limpar');
 	  			document.getElementById('new_register').reset();
@@ -129,7 +132,7 @@ function geraGrid(div) {
                 
             });*/
             container.append("<input id='refresh' class='refresh' type='button' value='Atualizar' />");
-            $('.refresh').jqxButton();
+            $('.refresh').jqxButton({theme: theme});
             $(".refresh").on('click', function () {
                 $(div).jqxGrid('updatebounddata');
             });
@@ -473,9 +476,9 @@ function geraGrid(div) {
 		]
 	});
     
-    $("#Cancel").jqxButton({ theme: 'arctic' });
-    $("#Save").jqxButton({ theme: 'arctic' });
-    $(".input_class").jqxInput({ theme: theme });
+    //$("#Cancel").jqxButton({ theme: 'arctic' });
+    //$("#Save").jqxButton({ theme: 'arctic' });
+    //$(".input_class").jqxInput({ theme: theme });
     $(".combo").jqxComboBox({ theme: theme });
     $(".currency").maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:','});
     $(".calendar").jqxDateTimeInput({theme: theme, culture: 'pt-BR'});

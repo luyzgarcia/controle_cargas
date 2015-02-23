@@ -118,7 +118,7 @@ class RedespachosController < ApplicationController
     #    'redespachos.empresa_id' => 'empresas.nome'
     #  }
     #  )
-    @registros = Redespacho.all.order(:created_at)
+    @registros = Redespacho.all.order(created_at: :desc)
   end
   
   def redespacho_params
