@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   
-  resources :empresas
+  resources :fornecedores
   resources :tipo_pagamentos
 
   #get 'redespacho/index'

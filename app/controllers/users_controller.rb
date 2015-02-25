@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :xml, :json
   
   def index
     set_listagem
+    @users = User.all.order(created_at: :desc)
+    @user = User.new
+    respond_to do |format|
+      format.html
+      format.json {render :json => @users.as_json}
+    end
   end
 
   def show
@@ -48,7 +55,8 @@ class UsersController < ApplicationController
   
   def destroy
     @user = User.find(params[:id])
-    if @user == current_user
+    if @user.id == current_user.id
+      logger.debug 'Você nao pode se excluir'
       respond_to do |format|
         format.html {redirect_to users_path, notice: 'Você não pode se excluir'}
       end
@@ -73,7 +81,7 @@ class UsersController < ApplicationController
     end
   
     def set_listagem
-      @users = initialize_grid(User.order(created_at: :desc), per_page: 20)
+      #@users = initialize_grid(User.order(created_at: :desc), per_page: 20)
     end
   
     def set_user
@@ -81,6 +89,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:nome, :email, :password, :password_confirmation, :encrypted_password)
+      params.require(:user).permit(:nome, :email, :password, :password_confirmation, :encrypted_password, :status)
     end
 end

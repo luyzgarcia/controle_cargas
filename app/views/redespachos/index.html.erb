@@ -1,9 +1,13 @@
 <%= javascript_include_tag 'redespachos' %>  
 
 <section class="content-header">
-	Controle de Cargas            
+	<h1>Controle de cargas</h1>
+	<ol class="breadcrumb">
+        <li><%= link_to root_path do %><i class="fa fa-dashboard"></i> Dashboard<% end %></li>
+        <li><%= link_to redespachos_path do %><i class="fa fa-table"></i> Redespachos<% end %></li>
+        <li class="active fa fa-user">Listagem</li>
+    </ol>  
 </section>
-	
 <section class="content">
 	<h4 class="page-header">
         Controle de cargas
@@ -45,8 +49,8 @@
 							</div>
 							
 							<div class="form-group">
-						 		<%= f.label :empresa %>
-	                			<%= f.collection_select :empresa_id ,Empresa.all, :id,:nome,{:include_blank => 'Selecione...'}, {:class => 'form-control combo'} %>
+						 		<%= f.label :fornecedor %>
+	                			<%= f.collection_select :fornecedor_id ,Fornecedor.all, :id,:nome,{:include_blank => 'Selecione...'}, {:class => 'form-control combo'} %>
 							</div>
 							
 							<div class="form-group">
@@ -103,7 +107,7 @@
 							<div class="form-group">
 						 		<%= f.label 'Forma de pagamento' %>
 	                			<%= f.select :forma_pagamento, options_for_select([['Boleto'],['Dinheiro'],['A Vista'],['A Prazo'],['Depósito'],['Cartão de crédito'],['Cheque'], ['Pago']], selected: @redespacho.forma_pagamento), {}, :class =>"combo form-control" %>
-							</div>	
+							</div>
 							
 							<div class="form-group">
 						 		<%= f.label :volume %>

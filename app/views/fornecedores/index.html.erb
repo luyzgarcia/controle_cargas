@@ -1,12 +1,12 @@
-<%= javascript_include_tag 'empresas' %>
+<%= javascript_include_tag 'fornecedores' %>
 
 <section class="content-header">
 	Empresas           
 </section>
 <section class="content">
 	<h4 class="page-header">
-        Gerenciar empresas
-        <small>Aqui você tem acesso a todas as empresas cadastradas, para editar clique duas vezes sobre um campo, ele irá salvar quando voce apertar <code>Enter</code></small>
+        Gerenciar fornecedores
+        <small>Aqui você tem acesso a todas os fornecedores, o <code>Fornecedores</code>são empresas que utilizam o serviço de entrega, para editar clique duas vezes sobre um campo, ele irá salvar quando voce apertar <code>Enter</code></small>
     </h4>
 	
 	<div id="grid_empresas">
@@ -18,14 +18,14 @@
 	</script>
 	<div id='nova_empresa_window' class="jqx-widget-content, jqx-input, jqx-widget, jqx-rc-all">
 		<div>
-		<%= form_for(@empresa, :remote => true, :html => { :role => "form", :class =>"form-horizontal"}) do |f| %>
-		  <% if @empresa.errors.any? %>
+		<%= form_for(@fornecedor, :remote => true, :html => { :role => "form", :class =>"form-horizontal"}) do |f| %>
+		  <% if @fornecedor.errors.any? %>
 		    <div id="error_explanation">
 			  <div class="alert alert-danger" role="alert">
 			  	<strong>Erro salvar empresa:</strong>
 			  	<br/><br/>
 			    <ul>
-			    	<% @empresa.errors.full_messages.each do |message| %>
+			    	<% @fornecedor.errors.full_messages.each do |message| %>
 			        	<li><%= message %></li>
 			      	<% end %>
 			    </ul>

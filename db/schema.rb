@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220204225) do
+ActiveRecord::Schema.define(version: 20150224184710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "empresas", force: true do |t|
+  create_table "fornecedores", force: true do |t|
     t.string   "nome"
     t.string   "razao_social"
     t.string   "cnpj"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150220204225) do
     t.datetime "updated_at",                                                                  null: false
     t.string   "remetente_cidade"
     t.string   "forma_pagamento"
-    t.integer  "empresa_id"
+    t.integer  "fornecedor_id"
     t.string   "tipo_redespacho",            limit: 3
     t.string   "status",                     limit: 3
   end
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20150220204225) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "status"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

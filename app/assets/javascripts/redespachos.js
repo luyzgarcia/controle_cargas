@@ -1,4 +1,4 @@
-var theme = 'energyblue';
+var theme = 'controllog';
 
 $(document).ready(function() {
 	geraGrid($("#grid_redespachos"));	
@@ -33,8 +33,8 @@ function geraGrid(div) {
 		datatype: "json",
 		datafields: [
 			{name: 'id', type: 'string'},
-			{name: 'empresa', map: 'empresa>nome'},
-			{name: 'empresa_id', map: 'empresa>id', type: 'hidden'},
+			{name: 'fornecedor', map: 'fornecedor>nome'},
+			{name: 'fornecedor_id', map: 'fornecedor>id', type: 'hidden'},
 			{name: 'status', type: 'hidden'},
 			{name: 'status_label', type: 'string'},
 			{name: 'tipo_redespacho', type: 'hidden'},
@@ -82,7 +82,7 @@ function geraGrid(div) {
 		altrows: true,
 		pagesize: 20,
 		showtoolbar: true,
-		theme: theme,
+		theme: 'controllog',
 		rendertoolbar: function (toolbar) {
 			var me = this;
 			var container = $("<div class='botoes_grid' style='margin: 5px'></div>");
@@ -160,7 +160,7 @@ function geraGrid(div) {
                   }
             },
 		    {text: 'Codigo', columngroup: 'dados', datafield: 'id', width: '100px', editable: false},
-			{text: 'Empresa', columngroup: 'dados', datafield: 'empresa', width: '150px', editable: false},
+			{text: 'Fornecedor', columngroup: 'dados', datafield: 'fornecedor', width: '150px', editable: false},
 			{text: 'Status', columngroup: 'dados', datafield: 'status_label', width: '150px', columntype: 'dropdownlist' ,
 			     createeditor: function (row, column, editor) {
 			         var list = [{value: "AND", label: 'Andamento'},{value: "FIN", label: 'Finalizado'}];

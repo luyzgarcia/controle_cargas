@@ -1,6 +1,6 @@
 class Redespacho < ActiveRecord::Base
   #obfuscate_id
-  belongs_to :empresa
+  belongs_to :fornecedor
   
   def status_label
     case self[:status]

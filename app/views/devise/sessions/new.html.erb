@@ -66,14 +66,9 @@
         </div>
         <div class="footer">
         	<%= f.submit "Log in", :class=>"btn bg-olive btn-block" %>
-        	<% flash.each do |name, msg| -%>
+        	<% flash.each do |name, msg| %>
 		      <p><%= msg %></p>
 		    <% end %>
-<!--		
-            <p><a href="#">I forgot my password</a></p>
-
-            <a href="register.html" class="text-center">Register a new membership</a>
-         -->
         </div>
     <% end %>
 </div>

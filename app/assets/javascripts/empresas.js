@@ -24,7 +24,7 @@ $(document).ready(function() {
 function geraEmpresas(div) {
 	  
 	
-	var url = "/empresas.json";
+	var url = "/fornecedores.json";
 	var source = {
 		datatype: "json",
 		datafields: [

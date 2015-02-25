@@ -9,7 +9,7 @@ class RedespachosController < ApplicationController
     #respond_with(@registros)
     respond_to do |format|
       format.html
-      format.json {render :json => @registros.to_json(:include => [:empresa])}
+      format.json {render :json => @registros.to_json(:include => [:fornecedor])}
     end
   end
   
@@ -37,7 +37,7 @@ class RedespachosController < ApplicationController
       
       respond_to do |format|
         if @redespacho.save
-          format.json {render :json => @redespacho.to_json(:include => [:empresa])}
+          format.json {render :json => @redespacho.to_json(:include => [:fornecedor])}
           format.html {redirect_to redespachos_path, notice: 'Redespacho salvo com sucesso!'}
         else
           format.json
@@ -125,6 +125,6 @@ class RedespachosController < ApplicationController
     params.require(:redespacho).permit(:remetente,:remetente_cidade, :destinatario, :destinatario_cidade, :valor_redespacho,
     :valor_comissao, :valor_liquido, :valor_frete, :volume, :peso, :nf_valor, :nf_numero, :forma_pagamento,
     :tipo_redespacho, :status,
-    :data_envio, :data_entrega, :recebido_por, :jadlog_lista_numero, :jadlog_conhecimento_numero, :empresa_id)
+    :data_envio, :data_entrega, :recebido_por, :jadlog_lista_numero, :jadlog_conhecimento_numero, :fornecedor_id)
   end
 end
