@@ -517,8 +517,8 @@ function editar_registro(dataRecord) {
     var status_index = $('#redespacho_status_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.status);
     $('#redespacho_status_jqxComboBox').jqxComboBox({selectedIndex: status_index.index});
     
-    var empresa_index = $('#redespacho_empresa_id_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.empresa_id);
-    $('#redespacho_empresa_id_jqxComboBox').jqxComboBox({selectedIndex: empresa_index.index});
+    var fornecedor_index = $('#redespacho_fornecedor_id_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.fornecedor_id);
+    $('#redespacho_fornecedor_id_jqxComboBox').jqxComboBox({selectedIndex: fornecedor_index.index});
     
     var status_tipo_redespacho = $('#redespacho_tipo_redespacho_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.tipo_redespacho);
     $('#redespacho_tipo_redespacho_jqxComboBox').jqxComboBox({selectedIndex: status_tipo_redespacho.index});
