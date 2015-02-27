@@ -112,16 +112,16 @@ class RelatoriosController < ApplicationController
       parametros = params[:consulta][:registros][:f] 
       if !parametros.nil? && !parametros.empty?
               
-        if !parametros[:empresa_id].blank?
-          empresa_id = '('
-          parametros[:empresa_id].each do |emp|
-            if emp != parametros[:empresa_id].last
-              empresa_id += emp + ','
+        if !parametros[:fornecedor_id].blank?
+          fornecedor_id = '('
+          parametros[:fornecedor_id].each do |emp|
+            if emp != parametros[:fornecedor_id].last
+              fornecedor_id += emp + ','
             else
-              empresa_id += emp + ')'  
+              fornecedor_id += emp + ')'  
             end 
           end
-          filter << ["empresa_id in #{empresa_id}"]
+          filter << ["fornecedor_id in #{fornecedor_id}"]
         end
         
         if !parametros[:status].blank?

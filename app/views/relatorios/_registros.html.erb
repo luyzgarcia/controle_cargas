@@ -19,9 +19,9 @@
 	  		custom_filter: Redespacho.all.map{|red| [red.id]}, detach_with_id: :id_filter do |registro|
 	  		registro.id	
 	  	end
-		g.column name: 'Empresa', attribute: 'empresa_id', 
-				custom_filter: Empresa.all.map{|emp| [emp.nome, emp.id]}, detach_with_id: :empresa_filter do |registro|
-			registro.empresa.nome if registro.empresa
+		g.column name: 'Fornecedor', attribute: 'fornecedor_id', 
+				custom_filter: Fornecedor.all.map{|emp| [emp.nome, emp.id]}, detach_with_id: :fornecedor_filter do |registro|
+			registro.fornecedor.nome if registro.fornecedor
 		end
 		g.column name: 'Status', attribute: 'status', custom_filter: [['Andamento', 'AND'], ['Finalizado','FIN'],['Não definido','null']], detach_with_id: :status_filter do |registro|
 			registro.status == 'AND' ? 'Andamento' : 'Finalizado' if !registro.status.nil?

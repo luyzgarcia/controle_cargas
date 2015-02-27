@@ -26,7 +26,7 @@
 	      <thead>
 	        <tr>
 	          <th>Código</th>
-	          <th>Empresa</th>
+	          <th>Fornecedor</th>
 	          <th>Status</th>
 	          <th>Tipo</th>
 	          <th>Remetente</th>
@@ -49,7 +49,7 @@
 	        <% @registros.each do |reg| %>
 	        	<tr>
 	        		<td><%= reg.id %></td>
-	        		<td><%= reg.empresa.nome %></td>
+	        		<td><%= reg.fornecedor.nome %></td>
 	        		<td><%= reg.status == 'AND' ? 'Andamento' : 'Finalizado' if !reg.status.nil? %></td>
 	        		<td><%= 
 	        				if !reg.tipo_redespacho.nil?
