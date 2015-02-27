@@ -27,7 +27,7 @@
 	      <thead>
 	        <tr>
 	          <th>Código</th>
-	          <th>Empresa</th>
+	          <th>Fornecedor</th>
 	          <th>Remetente</th>
 	          <th>Destinatario</th>
 	          <th>Cidade do Destinatario</th>
@@ -42,7 +42,7 @@
 	        <% @registros.each do |reg| %>
 	        	<tr>
 	        		<td><%= reg.id %></td>
-	        		<td><%= reg.empresa.nome %></td>
+	        		<td><%= reg.fornecedor.nome %></td>
 	        		<td><%= reg.remetente %></td>
 	        		<td><%= reg.destinatario %></td>
 	        		<td><%= reg.destinatario_cidade %></td>
