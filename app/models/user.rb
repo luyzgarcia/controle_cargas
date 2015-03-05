@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
       end
       self.role = 'usuario'
     else
-      self.empresa_id = 0
+      self.empresa = self.supervisor
     end
     
   end

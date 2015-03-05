@@ -98,7 +98,7 @@ class EmpresasController < ApplicationController
 
     def empresa_params
       params.require(:empresa).permit(:nome, :cnpj, :email, :telefone, :endereco, :cidade, :estado, :status, :razao_social, :email, :responsavel,
-              :observacao,
+              :observacao, :logo,
               {:supervisor_attributes => [:id,:supervisor_id, :empresa_id, :nome, :email, :password, :password_confirmation, :encrypted_password, :status, :role]})
     end
 end

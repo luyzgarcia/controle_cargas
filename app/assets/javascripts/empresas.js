@@ -49,7 +49,8 @@ function geraEmpresas(div) {
 			{name: 'status', type: 'string'},
 			{name: 'supervisor_id', map:'supervisor>id', type: 'hidden'},
 			{name: 'supervisor_nome', map: 'supervisor>nome', type: 'string'},
-			{name: 'supervisor_email', map: 'supervisor>email', type: 'string'}
+			{name: 'supervisor_email', map: 'supervisor>email', type: 'string'},
+			{name: 'supervisor_role', map: 'supervisor>role', type: 'string'}
 		],
 		addrow: function(rowid, rowdata, position, commit) {
 			commit(true);
@@ -158,6 +159,7 @@ function geraEmpresas(div) {
     //$("#Cancel").jqxButton({ theme: 'arctic' });
     //$("#Save").jqxButton({ theme: 'arctic' });
     //$(".input_class").jqxInput({ theme: theme });
+	 $(".combo").jqxComboBox({ theme: theme });
 }
 
 function excluir_registro(dataRecord) {
@@ -178,6 +180,10 @@ function excluir_registro(dataRecord) {
 
 
 function editar_registro(dataRecord) {
+	
+	var status_index = $('#empresa_supervisor_attributes_role_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.supervisor_role);
+    $('#empresa_supervisor_attributes_role_jqxComboBox').jqxComboBox({selectedIndex: status_index.index});
+    
     
     $('#empresa_nome').val(dataRecord.nome);
     $('#empresa_razao_social').val(dataRecord.razao_social);
