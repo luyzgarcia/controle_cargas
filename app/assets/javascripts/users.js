@@ -181,8 +181,7 @@ function geraGrid(div) {
             {text: 'Dados do Item', align: 'center', name: 'dados'}
         ]
     });
-    
-    //$(".combo").jqxComboBox({ theme: theme });
+    $(".combo").jqxComboBox({ theme: theme });
     
 }
 
@@ -201,17 +200,19 @@ function atualiza_servidor(dados) {
 }
 
 function excluir_registro(dataRecord) {
-    console.log(dataRecord);
-    $.ajax({
-      type: "DELETE",
-      url: "/users/"+dataRecord.id,
-      success: function(event, request, settings ) {
-          },
-          error: function(e){
-              
-          }
-        });
-   $(grid).jqxGrid('updatebounddata');
+	var r = confirm("Tem certeza?");
+    if(r == true) {
+	    $.ajax({
+	      type: "DELETE",
+	      url: "/users/"+dataRecord.id,
+	      success: function(event, request, settings ) {
+	          },
+	          error: function(e){
+	              
+	          }
+	        });
+	   $(grid).jqxGrid('updatebounddata');
+    }
     
 }
 function editar_registro(dataRecord) {
@@ -237,13 +238,15 @@ function editar_registro(dataRecord) {
           url: "/users/"+dataRecord.id,
           data: $('#new_user').serialize(),
           success: function(event, request, settings ) {
+        	  alert('sucesso');
         	  $("#new_register_window").jqxWindow('hide');
               $(grid).jqxGrid('updatebounddata');
               $("#new_register_window input[type='text']").val('');
           },
           error: function(xhr, status, error){
+        	  alert('erro');
         	  var data = JSON.parse(xhr.responseText);
-              mostrar_errors($('#new_empresa'), data);
+              mostrar_errors($('#new_user'), data);
           }
         });
        

@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     if(@user.update(user_params))
       respond_to do |format|
         format.html {redirect_to users_path, notice: 'Usuário atualizado com sucesso!'}
+        return render json: { success: true}
       end
     else
       respond_to do |format|
@@ -63,15 +64,17 @@ class UsersController < ApplicationController
         format.html {redirect_to users_path, notice: 'Você não pode se excluir'}
         format.json { render json: {:errors => @user.errors}, status: 422}
       end
+    else
+      respond_to do |format|
+        if @user.destroy
+          format.html {redirect_to users_path, notice: 'Registro excluido!'}
+          return render json: { success: true}
+        else
+          format.json { render json: {:errors => @user.errors}, status: 422}
+          format.html {redirect_to users_path, notice: 'Erro ao excluir registro!'} 
+        end
+     end
     end
-    respond_to do |format|
-      if @user.destroy
-        format.html {redirect_to users_path, notice: 'Registro excluido!'}
-      else
-        format.json { render json: {:errors => @user.errors}, status: 422}
-        format.html {redirect_to users_path, notice: 'Erro ao excluir registro!'} 
-      end
-   end
   end
   
   private
@@ -93,6 +96,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:nome, :email, :password, :password_confirmation, :encrypted_password, :status)
+      params.require(:user).permit(:nome, :email, :password, :password_confirmation, :encrypted_password, :status, :role)
     end
 end
