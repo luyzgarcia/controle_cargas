@@ -238,13 +238,11 @@ function editar_registro(dataRecord) {
           url: "/users/"+dataRecord.id,
           data: $('#new_user').serialize(),
           success: function(event, request, settings ) {
-        	  alert('sucesso');
         	  $("#new_register_window").jqxWindow('hide');
               $(grid).jqxGrid('updatebounddata');
               $("#new_register_window input[type='text']").val('');
           },
           error: function(xhr, status, error){
-        	  alert('erro');
         	  var data = JSON.parse(xhr.responseText);
               mostrar_errors($('#new_user'), data);
           }

@@ -16,7 +16,6 @@ class EmpresasController < ApplicationController
   end
   
   def show
-  
     respond_with(@empresa)
   end
 
