@@ -58,7 +58,7 @@
                                         <%= current_user.nome %>
                                         <small>
                                         	<%= 
-                                        		#(current_user.empresa.nil? ) ? current_user.supervisor.nome : current_user.empresa.nome
+                                        		current_user.empresa.nil? ? current_user.supervisor.nome : current_user.empresa.nome
                                         	%>
                                         </small>
                                         <small>Ultimo acesso em <%= current_user.last_sign_in_at %></small>                                        
