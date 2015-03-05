@@ -57,8 +57,9 @@
                                     <p>
                                         <%= current_user.nome %>
                                         <small>
-                                        	<%= 
-                                        		current_user.empresa.nil? ? current_user.supervisor.nome : current_user.empresa.nome
+                                        	<%= if(current_user.role != 'admin')
+                                        			current_user.empresa.nil? ? current_user.supervisor.nome : current_user.empresa.nome
+                                        		end
                                         	%>
                                         </small>
                                         <small>Ultimo acesso em <%= current_user.last_sign_in_at %></small>                                        
