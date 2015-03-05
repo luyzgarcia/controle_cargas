@@ -1,0 +1,12 @@
+
+<section class="content-header">
+	<h1>Nova empresa</h1>
+	<ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><%= link_to empresas_path do %><i class="fa fa-institution"></i> Empresas<% end %></li>
+        <li class="active fa fa-institution">Novo</li>
+    </ol>  
+</section>
+<section class="content">
+	<%= render 'form' %>
+</section>

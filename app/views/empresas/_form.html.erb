@@ -1,0 +1,154 @@
+
+	<div class="row">
+			<%= form_for([@empresa], :html => { :role => "form"}) do |f| %>
+			  <div class="col-md-12">
+			  	<div id='error_messages'></div>
+			  </div>
+			  <% if @empresa.errors.any? %>
+			    <div id="error_explanation">
+				  <div class="alert alert-danger" role="alert">
+				  	<strong>Erro ao salvar</strong>
+				  	<br/><br/>
+				    <ul>
+				    	<% @empresa.errors.full_messages.each do |message| %>
+				        	<li><%= message %></li>
+				      	<% end %>
+				    </ul>
+				   </div>
+			    </div>
+			  <% end %>
+			  
+				 <div class="col-md-6">
+					<div class="box box-primary">
+					    <div class="box-header">
+					        <h3 class="box-title">Dados da empresa</h3>
+					    </div>
+						<div class="box-body">
+					    	<div class="form-group">
+				                <%= f.label :nome, 'Nome'%>
+				                <%= f.text_field :nome, :class =>"form-control", :placeholder=> :nome %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :razao_social, 'Nome'%>
+				                <%= f.text_field :razao_social, :class =>"form-control", :placeholder=> :razao_social %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :cnpj %>
+				                <%= f.text_field :cnpj, :class =>"form-control data-mask", :placeholder=> :cnpj, :data => {:inputmask => '"mask": "999.999.999-99"'}  %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :telefone%>
+				                <%= f.text_field :telefone, :class =>"form-control data-mask", :placeholder=> :telefone, :data => {:inputmask => '"mask": "(999) 9999-9999[9]"'}  %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :endereco %>
+				                <%= f.text_field :endereco, :class =>"form-control", :placeholder=> :endereco %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :cidade %>
+				                <%= f.text_field :cidade, :class =>"form-control", :placeholder=> :cidade %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :estado %>
+				                <%= f.select(:estado, options_for_select([['Acre','AC'],
+									['Alagoas','AL'],
+									['Amazonas','AM'],
+									['Amapá','AP'],
+									['Bahia','BA'],
+									['Ceará','CE'],
+									['Distrito Federal','DF'],
+									['Espírito Santo','ES'],
+									['Goiás','GO'],
+									['Maranhão','MA'],
+									['Minas Gerais','MG'],
+									['Mato Grosso do Sul','MS'],
+									['Mato Grosso','MT'],
+									['Pará','PA'],
+									['Paraíba','PB'],
+									['Pernambuco','PE'],
+									['Piauí','PI'],
+									['Paraná','PR'],
+									['Rio de Janeiro','RJ'],
+									['Rio Grande do Norte','RN'],
+									['Rondônia','RO'],
+									['Roraima','RR'],
+									['Rio Grande do Sul','RS'],
+									['Santa Catarina','SC'],
+									['Sergipe','SE'],
+									['São Paulo','SP'],
+									['Tocantins','TO']], selected: @empresa.estado),{ }, :class =>"form-control", :placeholder=> :estado) %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :email %>
+				                <%= f.email_field :email, :class =>"form-control", :placeholder=> :email %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :responsavel %>
+				                <%= f.text_field :responsavel, :class =>"form-control", :placeholder=> :responsavel %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :status %>
+				                <%= f.select :status, options_for_select([['Ativo'],['Inativo']], selected: @empresa.status), {}, :class =>" form-control combo" %>
+				            </div>
+				            <div class="form-group">
+				                <%= f.label :observacao %>
+				                <%= f.text_area :observacao, :class =>"form-control", :placeholder=> :observacao %>
+				            </div>
+				            
+				            
+				            <div class="form-group">
+				            	<label for="exampleInputFile">Logo da empresa</label>
+				            	<%= f.file_field :logo %>
+				            </div>
+		            	</div>
+		            </div>
+		        </div>
+	            <div class="col-md-6">
+					<div class="box box-primary">
+					    <div class="box-header">
+					        <h3 class="box-title">Dados do usuario principal</h3>
+					    </div>
+						<div class="box-body">
+	            			<%= f.fields_for :supervisor do |u| %>
+	            			<%= u.hidden_field :id, :value => @empresa.supervisor.id %>
+					            <div class="form-group">
+					                <%= u.label :nome %>
+					                <%= u.text_field :nome, :class =>"form-control", :placeholder=> :nome %>
+					            </div>
+					            
+					            <div class="form-group">
+					                <%= u.label :email, 'Email' %>
+					                <%= u.email_field :email, :class =>"form-control", :placeholder=> :email %>
+					            </div>
+					            
+					            <div class="form-group">
+					                <%= u.label :password, 'Senha' %>
+					                <%= u.password_field :password, :class =>"form-control", :placeholder=> :senha %>
+					            </div>
+					            
+					            <div class="form-group">
+					                <%= u.label :password_confirmation, 'Confirme sua senha'%>
+					                <%= u.password_field :password_confirmation, :class =>"form-control", :placeholder=> 'Confirme sua senha' %>
+					            </div>
+					            
+					            <div class="form-groud">
+					            	<%= u.label :role %><br />
+								    <%= u.select :role, options_for_select(User::ROLES), {}, :class =>"combo form-control" %>
+					            </div>
+					            
+			    			<% end %>
+			   			 </div>
+			   		</div>
+			   	</div>
+			 <div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-body">
+						<div class="box-footer">
+			  				<%= f.submit 'Salvar', :class => "btn btn-primary" %>
+				        </div>
+				    </div>
+				</div>
+			</div>
+		<% end %>				
+	</div>
+

@@ -74,3 +74,10 @@ gem 'libv8'
 
 #paperclick - upload de imagens
 gem 'paperclip', github: 'thoughtbot/paperclip'
+
+#formatar input mask
+#https://github.com/RobinHerbots/jquery.inputmask
+gem 'jquery-inputmask-rails'
+
+#Para autorizacao
+gem "cancan"

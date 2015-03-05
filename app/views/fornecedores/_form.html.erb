@@ -1,108 +1,111 @@
-<%= form_for(@empresa, :html => { :role => "form", :class =>"form-horizontal"}) do |f| %>
-  <% if @empresa.errors.any? %>
-    <div id="error_explanation">
-	  <div class="alert alert-danger" role="alert">
-	  	<strong>Erro salvar empresa:</strong>
-	  	<br/><br/>
-	    <ul>
-	    	<% @empresa.errors.full_messages.each do |message| %>
-	        	<li><%= message %></li>
-	      	<% end %>
-	    </ul>
-	   </div>
-    </div>
-  <% end %>
-  
-	<div class="form-wrapper-group">
-		<div class="form-group">
-			<%= f.label :nome, 'Nome', :class => "col-sm-1 control-label"%>
-			<div class="col-sm-3">
-			<%= f.text_field :nome, :class =>"form-control" %>
-			</div>	
-			
-			<%= f.label :razao_social, 'Razão Social', :class => "col-sm-2 control-label"%>
-			<div class="col-sm-4">
-			<%= f.text_field :razao_social, :class =>"form-control" %>
-			</div>			
-	  	</div>
-	</div>
-	<div class="form-wrapper-group">
-		<div class="form-group">
-			<%= f.label :cnpj, 'CNPJ', :class => "col-sm-1 control-label"%>
-			<div class="col-sm-3">
-			<%= f.text_field :cnpj, :class =>"form-control", :data =>{:mask =>"99.999.999/9999-99"} %>
-			</div>	
-			
-			<%= f.label :email, 'Email', :class => "col-sm-2 control-label"%>
-			<div class="col-sm-4">
-			<%= f.email_field :email, :class =>"form-control" %>
-			</div>			
-	  	</div>
-	</div>
-	<div class="form-wrapper-group">
-		<div class="form-group">
-			<%= f.label :telefone, 'Telefone', :class => "col-sm-1 control-label"%>
-			<div class="col-sm-3">
-			<%= f.text_field :telefone, :class =>"form-control", :data =>{:mask =>"(999)9999-9999?9"} %>
-			</div>	
-			
-			<%= f.label :responsavel, 'Responsavel', :class => "col-sm-2 control-label"%>
-			<div class="col-sm-4">
-			<%= f.text_field :responsavel, :class =>"form-control" %>
-			</div>			
-	  	</div>
-	</div>
-	<div class="form-wrapper-group">
-		<div class="form-group">
-			<%= f.label :estado, 'Estado', :class => "col-sm-1 control-label"%>
-			<div class="col-sm-3">
-			<%= f.select(:estado, options_for_select([['Acre','AC'],
-				['Alagoas','AL'],
-				['Amazonas','AM'],
-				['Amapá','AP'],
-				['Bahia','BA'],
-				['Ceará','CE'],
-				['Distrito Federal','DF'],
-				['Espírito Santo','ES'],
-				['Goiás','GO'],
-				['Maranhão','MA'],
-				['Minas Gerais','MG'],
-				['Mato Grosso do Sul','MS'],
-				['Mato Grosso','MT'],
-				['Pará','PA'],
-				['Paraíba','PB'],
-				['Pernambuco','PE'],
-				['Piauí','PI'],
-				['Paraná','PR'],
-				['Rio de Janeiro','RJ'],
-				['Rio Grande do Norte','RN'],
-				['Rondônia','RO'],
-				['Roraima','RR'],
-				['Rio Grande do Sul','RS'],
-				['Santa Catarina','SC'],
-				['Sergipe','SE'],
-				['São Paulo','SP'],
-				['Tocantins','TO']], selected: @empresa.estado),{ }, {:class =>"form-control"}) %>
-			</div>	
-			
-			<%= f.label :cidade, 'Cidade', :class => "col-sm-2 control-label"%>
-			<div class="col-sm-4">
-			<%= f.text_field :cidade, :class =>"form-control" %>
-			</div>			
-	  	</div>
-	</div>
-	<div class="form-wrapper-group">
-		<div class="form-group">
-			<%= f.label :observacao, 'Observação', :class => "col-sm-1 control-label"%>
-			<div class="col-sm-3">
-			<%= f.text_area :observacao, :class =>"form-control" %>
-			</div>		
-			
-	  	</div>
-	</div>
-	
-  <div class="actions">
-    <%= f.submit 'Salvar', :class => "btn btn-success" %>
-	<%= link_to 'Cancelar', empresas_path,  :class => "btn btn-danger" %>
-  </div>
-<% end %>
+<div class="row">
+	<%= form_for(@fornecedor, :html => { :role => "form"}) do |f| %>
+	  <% if @fornecedor.errors.any? %>
+	    <div class="col-md-12">
+		  	<div id='error_messages'></div>
+		 </div>
+	    <div id="error_explanation">
+		  <div class="alert alert-danger" role="alert">
+		  	<strong>Erro salvar empresa:</strong>
+		  	<br/><br/>
+		    <ul>
+		    	<% @fornecedor.errors.full_messages.each do |message| %>
+		        	<li><%= message %></li>
+		      	<% end %>
+		    </ul>
+		   </div>
+	    </div>
+	  <% end %>
+	  	<div class="col-md-6">
+			<div class="box box-primary">
+			    <div class="box-header">
+			        <h3 class="box-title">Dados do fornecedor</h3>
+			    </div>
+			    <div class="box-body">
+			    	<div class="form-group">
+			    		<%= f.label :nome, 'Nome'%>
+			    		<%= f.text_field :nome, :class =>"form-control", :placeholder=> :nome %>
+			    	</div>
+			    	<div class="form-group">
+			    		<%= f.label :razao_social, 'Razão Social'%>
+						<%= f.text_field :razao_social, :class =>"form-control", :placeholder=> 'Razão social' %>
+			    	</div>
+			    	<div class="form-group">
+			    		<%= f.label :cnpj, 'CNPJ'%>
+						<%= f.text_field :cnpj, :class =>"form-control data-mask", :placeholder=> 'CNPJ', :data => {:inputmask => '"mask": "999.999.999-99"'}  %>
+				
+			    	</div>
+			    	<div class="form-group">
+			    		<%= f.label :email, 'Email'%>
+						<%= f.email_field :email, :class =>"form-control", :placeholder=> :email%>
+			    	</div>
+			    	<div class="form-group">
+			    		<%= f.label :telefone, 'Telefone'%>
+						<%= f.text_field :telefone, :class =>"form-control data-mask",:placeholder=> :telefone, :data => {:inputmask => '"mask": "(999) 9999-9999[9]"'}  %>
+			    	</div>
+			    	<div class="form-group">
+			    		<%= f.label :responsavel, 'Responsavel'%>
+						<%= f.text_field :responsavel, :class =>"form-control",:placeholder=> :responsavel %>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="box box-primary">
+			    <div class="box-header">
+			        <h3 class="box-title">Dados do fornecedor</h3>
+			    </div>
+			    <div class="box-body">
+			    	<div class="form-group">
+			    		<%= f.label :cidade, 'Cidade'%>
+						<%= f.text_field :cidade, :class =>"form-control",:placeholder=> :cidade %>
+			    	</div>
+			    	<div class="form-group">
+			    		<%= f.label :estado, 'Estado'%>
+						<%= f.select(:estado, options_for_select([['Acre','AC'],
+							['Alagoas','AL'],
+							['Amazonas','AM'],
+							['Amapá','AP'],
+							['Bahia','BA'],
+							['Ceará','CE'],
+							['Distrito Federal','DF'],
+							['Espírito Santo','ES'],
+							['Goiás','GO'],
+							['Maranhão','MA'],
+							['Minas Gerais','MG'],
+							['Mato Grosso do Sul','MS'],
+							['Mato Grosso','MT'],
+							['Pará','PA'],
+							['Paraíba','PB'],
+							['Pernambuco','PE'],
+							['Piauí','PI'],
+							['Paraná','PR'],
+							['Rio de Janeiro','RJ'],
+							['Rio Grande do Norte','RN'],
+							['Rondônia','RO'],
+							['Roraima','RR'],
+							['Rio Grande do Sul','RS'],
+							['Santa Catarina','SC'],
+							['Sergipe','SE'],
+							['São Paulo','SP'],
+							['Tocantins','TO']], selected: @fornecedor.estado),{ }, {:class =>"form-control"}) %>
+			    	</div>
+			    	<div class="form-group">
+			    		<%= f.label :observacao, 'Observação' %>
+						<%= f.text_area :observacao, :class =>"form-control",:placeholder=> :observacao %>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="box box-primary">
+				<div class="box-body">
+					<div class="box-footer">
+		  				<%= f.submit 'Salvar', :class => "btn btn-primary" %>
+		  				<%= link_to 'Cancelar', '#', :id => 'Cancel', :class => "btn_fechar btn btn-cancel" %>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	<% end %>
+</div>

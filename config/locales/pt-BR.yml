@@ -1,0 +1,24 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Por favor, insira um email"
+              taken: "Este email já esta em uso"
+              invalid: "Insira um email válido"
+            password:
+              blank: "Você não digitou uma senha"
+              confirmation: "As senhas não conferem"
+              too_short: "A senha é muito curta"
+            password_confirmation:
+              blank: "Você não confirmou sua senha"
+            first_name:
+              blank: "Preencha o primeiro nome"
+            last_name:
+              blank: "Preencha o ultimo nome"
+        empresa:
+          attributes:
+            nome:
+              blank: "Nome da empresa deve ser preenchido"

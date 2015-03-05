@@ -16,6 +16,26 @@ ActiveRecord::Schema.define(version: 201502252114231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "empresas", force: true do |t|
+    t.string   "nome"
+    t.string   "cnpj"
+    t.string   "telefone"
+    t.string   "endereco"
+    t.string   "cidade"
+    t.string   "estado"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+    t.string   "razao_social"
+    t.string   "responsavel"
+    t.text     "observacao"
+    t.string   "email"
+  end
+
   create_table "fornecedores", force: true do |t|
     t.string   "nome"
     t.string   "razao_social"
@@ -28,7 +48,10 @@ ActiveRecord::Schema.define(version: 201502252114231) do
     t.text     "observacao"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "empresa_id"
   end
+
+  add_index "fornecedores", ["empresa_id"], name: "index_fornecedores_on_empresa_id", using: :btree
 
   create_table "redespachos", force: true do |t|
     t.string   "remetente"
@@ -53,7 +76,10 @@ ActiveRecord::Schema.define(version: 201502252114231) do
     t.integer  "fornecedor_id"
     t.string   "tipo_redespacho",            limit: 3
     t.string   "status",                     limit: 3
+    t.integer  "empresa_id"
   end
+
+  add_index "redespachos", ["empresa_id"], name: "index_redespachos_on_empresa_id", using: :btree
 
   create_table "tipo_pagamentos", force: true do |t|
     t.string   "nome"
@@ -81,9 +107,12 @@ ActiveRecord::Schema.define(version: 201502252114231) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "status",                 default: "Inativo"
+    t.integer  "empresa_id"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["empresa_id"], name: "index_users_on_empresa_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

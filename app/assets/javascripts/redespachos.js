@@ -20,7 +20,6 @@ $(document).ready(function() {
 		isModal: true,
 		dragArea: { left: 0, top: 45, width: 0, height: 0 }
 	 });
-	 
 });
 
 var grid = '';
@@ -90,8 +89,7 @@ function geraGrid(div) {
 			container.append("<input id='addnewregister' class='addnewregister' type='button' value='Nova Redespacho' />");
 	  		$('.addnewregister').jqxButton({theme: theme});
 	  		$(".addnewregister").on('click', function () {
-	  		    console.log('vai limpar');
-	  			document.getElementById('new_register').reset();
+	  		    document.getElementById('new_register').reset();
 	  			//$('#new_empresa').get(0).setAttribute('action', '/empresas); //this works
 				
 	  			$("#new_register_window").jqxWindow({
@@ -500,21 +498,23 @@ function atualiza_servidor(dados) {
 }
 
 function excluir_registro(dataRecord) {
-    console.log(dataRecord);
-    $.ajax({
-      type: "DELETE",
-      url: "/redespachos/"+dataRecord.id,
-      success: function(event, request, settings ) {
-          },
-          error: function(e){
-              
-          }
-        });
-   $(grid).jqxGrid('updatebounddata');
-    
+	var r = confirm("Tem certeza?");
+    if(r == true) {
+	    $.ajax({
+	      type: "DELETE",
+	      url: "/redespachos/"+dataRecord.id,
+	      success: function(event, request, settings ) {
+	          },
+	          error: function(e){
+	              
+	          }
+	        });
+	   $(grid).jqxGrid('updatebounddata'); 
+    }
 }
 function editar_registro(dataRecord) {
     var status_index = $('#redespacho_status_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.status);
+    
     $('#redespacho_status_jqxComboBox').jqxComboBox({selectedIndex: status_index.index});
     
     var fornecedor_index = $('#redespacho_fornecedor_id_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.fornecedor_id);

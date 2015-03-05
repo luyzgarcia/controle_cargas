@@ -7,6 +7,7 @@ class FornecedoresController < ApplicationController
 
   def index
     @fornecedor = Fornecedor.new
+    
     respond_with(@fornecedores)
   end
   
@@ -47,7 +48,7 @@ class FornecedoresController < ApplicationController
         #responde_with(@fornecedor)
         #format.html {redirect_to fornecedors_path, notice: 'Fornecedor foi cadastrada com sucesso!'}
       else
-        format.json
+        format.json { render json: {:errors => @fornecedor.errors}, status: 422}
         #format.html {redirect_to fornecedors_path, notice: 'Erro ao cadastradar!'} 
       end
     end
@@ -60,7 +61,7 @@ class FornecedoresController < ApplicationController
           format.json {render json:@fornecedor}
         else
           #format.html {redirect_to fornecedors_path, notice: 'Erro ao atualizar registro'} 
-          format.json {render json:@fornecedor}
+          format.json { render json: {:errors => @fornecedor.errors}, status: 422}
         end
     end
   end
@@ -69,7 +70,9 @@ class FornecedoresController < ApplicationController
     respond_to do |format|
       if @fornecedor.destroy
         format.html {redirect_to fornecedores_path, notice: 'Fornecedor excluida!'}
+        format.json { render json: {}, status: 200}
       else
+        format.json { render json: {:errors => @fornecedor.errors}, status: 422}
         format.html {redirect_to fornecedores_path, notice: 'Erro ao excluir excluida!'}
       end
    end

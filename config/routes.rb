@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :fornecedores
   resources :tipo_pagamentos
+  resources :empresas
 
   #get 'redespacho/index'
   

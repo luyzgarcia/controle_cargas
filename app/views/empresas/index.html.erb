@@ -1,0 +1,23 @@
+<%= javascript_include_tag 'empresas' %>  
+<section class="content-header">
+	<h1>Empresas</h1>
+	<ol class="breadcrumb">
+        <li><%= link_to root_path do %><i class="fa fa-dashboard"></i> Dashboard<% end %></li>
+        <li class="active fa fa-user">Listagem</li>
+    </ol>  
+</section>
+<section class="content">
+	<h4 class="page-header">
+        Empresas
+        <small>Aqui você tem acesso a todas as empresas do sistema, empresas tem pelo menos um usúario ativo que podem se logar e ter acesso a todos os dados no sistema,
+        	 para editar clique duas vezes sobre um campo, ele irá salvar quando voce apertar <code>Enter</code></small>
+    </h4>
+    
+    <div id="grid_empresas">
+		
+	</div>
+	
+	<div id='nova_empresa_window' class="jqx-widget-content, jqx-input, jqx-widget, jqx-rc-all">
+		<%= render 'form' %>
+	</div>
+</section>
