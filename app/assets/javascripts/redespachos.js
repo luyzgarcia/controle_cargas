@@ -477,10 +477,10 @@ function geraGrid(div) {
     //$("#Cancel").jqxButton({ theme: 'arctic' });
     //$("#Save").jqxButton({ theme: 'arctic' });
     //$(".input_class").jqxInput({ theme: theme });
-    $(".combo").jqxComboBox({ theme: theme });
+    $(".combo").jqxDropDownList({ theme: theme,  width: '100%', height: '35' });
     $(".dinheiro").maskMoney({prefix:'R$ ',affixesStay:false, allowNegative: true, thousands:'.', decimal:'.'});
     //$(".currency").maskMoney({ allowNegative: true, thousands:'.', decimal:','});
-    $(".calendar").jqxDateTimeInput({theme: theme, culture: 'pt-BR'});
+    $(".calendar").jqxDateTimeInput({theme: theme, culture: 'pt-BR', width: '100%', height: '35'});
 }
 
 function atualiza_servidor(dados) {
@@ -513,15 +513,14 @@ function excluir_registro(dataRecord) {
     }
 }
 function editar_registro(dataRecord) {
-    var status_index = $('#redespacho_status_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.status);
+    var status_index = $('#redespacho_status_jqxDropDownList').jqxDropDownList('getItemByValue', dataRecord.status);
+    $('#redespacho_status_jqxDropDownList').jqxDropDownList({selectedIndex: status_index.index});
     
-    $('#redespacho_status_jqxComboBox').jqxComboBox({selectedIndex: status_index.index});
+    var fornecedor_index = $('#redespacho_fornecedor_id_jqxDropDownList').jqxDropDownList('getItemByValue', dataRecord.fornecedor_id);
+    $('#redespacho_fornecedor_id_jqxDropDownList').jqxDropDownList({selectedIndex: fornecedor_index.index});
     
-    var fornecedor_index = $('#redespacho_fornecedor_id_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.fornecedor_id);
-    $('#redespacho_fornecedor_id_jqxComboBox').jqxComboBox({selectedIndex: fornecedor_index.index});
-    
-    var status_tipo_redespacho = $('#redespacho_tipo_redespacho_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.tipo_redespacho);
-    $('#redespacho_tipo_redespacho_jqxComboBox').jqxComboBox({selectedIndex: status_tipo_redespacho.index});
+    var status_tipo_redespacho = $('#redespacho_tipo_redespacho_jqxDropDownList').jqxDropDownList('getItemByValue', dataRecord.tipo_redespacho);
+    $('#redespacho_tipo_redespacho_jqxDropDownList').jqxDropDownList({selectedIndex: status_tipo_redespacho.index});
     
     $('#redespacho_remetente').val(dataRecord.remetente);
     $('#redespacho_remetente_cidade').val(dataRecord.remetente_cidade);

@@ -181,7 +181,7 @@ function geraGrid(div) {
             {text: 'Dados do Item', align: 'center', name: 'dados'}
         ]
     });
-    $(".combo").jqxComboBox({ theme: theme });
+    $(".combo").jqxDropDownList({ theme: theme,  width: '100%', height: '35' });
     
 }
 
@@ -220,8 +220,8 @@ function editar_registro(dataRecord) {
     $('#user_nome').val(dataRecord.nome);
     $('#user_email').val(dataRecord.email);
     
-    var status_index = $('#user_status_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.status);
-    $('#user_status_jqxComboBox').jqxComboBox({selectedIndex: status_index.index});
+    var status_index = $('#user_status_jqxDropDownList').jqxDropDownList('getItemByValue', dataRecord.status);
+    $('#user_status_jqxDropDownList').jqxDropDownList({selectedIndex: status_index.index});
     
     
     $("#new_register_window").jqxWindow({

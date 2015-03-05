@@ -159,7 +159,7 @@ function geraEmpresas(div) {
     //$("#Cancel").jqxButton({ theme: 'arctic' });
     //$("#Save").jqxButton({ theme: 'arctic' });
     //$(".input_class").jqxInput({ theme: theme });
-	 $(".combo").jqxComboBox({ theme: theme });
+	 $(".combo").jqxDropDownList({ theme: theme,  width: '100%', height: '35' });
 }
 
 function excluir_registro(dataRecord) {
@@ -181,8 +181,10 @@ function excluir_registro(dataRecord) {
 
 function editar_registro(dataRecord) {
 	
-	var status_index = $('#empresa_supervisor_attributes_role_jqxComboBox').jqxComboBox('getItemByValue', dataRecord.supervisor_role);
-    $('#empresa_supervisor_attributes_role_jqxComboBox').jqxComboBox({selectedIndex: status_index.index});
+	var status_index = $('#empresa_supervisor_attributes_role_jqxDropDownList').jqxDropDownList('getItemByValue', dataRecord.supervisor_role);
+	console.log(status_index);
+	
+    $('#empresa_supervisor_attributes_role_jqxDropDownList').jqxDropDownList({selectedIndex: status_index.index});
     
     
     $('#empresa_nome').val(dataRecord.nome);
