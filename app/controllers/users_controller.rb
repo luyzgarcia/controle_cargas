@@ -26,7 +26,8 @@ class UsersController < ApplicationController
       if @user.save
        format.html { redirect_to users_path, notice: 'Usuario foi cadastrado com sucesso.' }
       else
-       format.html { render action: 'new' }  
+        format.json { render json: {:errors => @user.errors}, status: 422}
+        format.html { render 'new', notice: 'Erro ao cadastradar!'}   
       end
     end
   end
@@ -48,7 +49,8 @@ class UsersController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render action: 'edit' }  
+        format.json { render json: {:errors => @user.errors}, status: 422}
+        format.html { render 'edit', notice: 'Erro ao cadastradar!'} 
       end    
     end
   end
@@ -59,12 +61,14 @@ class UsersController < ApplicationController
       logger.debug 'Você nao pode se excluir'
       respond_to do |format|
         format.html {redirect_to users_path, notice: 'Você não pode se excluir'}
+        format.json { render json: {:errors => @user.errors}, status: 422}
       end
     end
     respond_to do |format|
       if @user.destroy
         format.html {redirect_to users_path, notice: 'Registro excluido!'}
       else
+        format.json { render json: {:errors => @user.errors}, status: 422}
         format.html {redirect_to users_path, notice: 'Erro ao excluir registro!'} 
       end
    end

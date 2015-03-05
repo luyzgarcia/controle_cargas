@@ -109,7 +109,6 @@ function geraEmpresas(div) {
   		 		$("#nova_empresa_window").jqxWindow('open');
   		 		$('.btn_fechar').click(function () {
                     $('#nova_empresa_window').jqxWindow('close');
-                    limpar_mensagens($('#new_empresa'));
                 });
 	  		});
 	  		container.append("<input id='refresh' class='refresh' type='button' value='Atualizar' />");

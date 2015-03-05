@@ -157,7 +157,7 @@ function geraGrid(div) {
                     editar_registro(dataRecord);
                   }
             },
-		    {text: 'Codigo', columngroup: 'dados', datafield: 'id', width: '100px', editable: false},
+		    {text: 'Codigo', columngroup: 'dados', datafield: 'id', width: '50px', align:'center', editable: false},
 			{text: 'Fornecedor', columngroup: 'dados', datafield: 'fornecedor', width: '150px', editable: false},
 			{text: 'Status', columngroup: 'dados', datafield: 'status_label', width: '150px', columntype: 'dropdownlist' ,
 			     createeditor: function (row, column, editor) {

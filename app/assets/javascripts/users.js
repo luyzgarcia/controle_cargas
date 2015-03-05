@@ -13,12 +13,14 @@ $(document).ready(function() {
             },
         showCollapseButton: false,
         resizable: false, 
-        height: 555, 
+        height: 440, 
         width: 500,
         maxWidth: 500,
         maxHeight: 555,
         isModal: true,
         dragArea: { left: 0, top: 45, width: 0, height: 0 }
+     }).on('close', function (event) {
+         limpar_mensagens($('#new_user'));
      });
      
 });
@@ -71,18 +73,19 @@ function geraGrid(div) {
             container.append("<input id='addnewregister' class='addnewregister' type='button' value='Nova Usuário' />");
             $('.addnewregister').jqxButton({theme: theme});
             $(".addnewregister").on('click', function () {
-                document.getElementById('new_register').reset();
+                //document.getElementById('new_register').reset();
                 //$('#new_empresa').get(0).setAttribute('action', '/empresas); //this works
-                
+            	$("#new_register_window input[type='text']").val('');
                 $("#new_register_window").jqxWindow({
                     title: 'Novo Usuário'
                 });
-                $( "#new_register" ).unbind("submit");
-                $('#new_register').submit(function() {
+                $( "#new_user" ).unbind("submit");
+                var $this = this;
+                $('#new_user').submit(function() {
                     $.ajax({
                       type: "POST",
                       url: "/users",
-                      data: $('#new_register').serialize(),
+                      data: $('#new_user').serialize(),
                       success: function(event, request, settings ) {
                           //console.log(event);
                           //$(div).jqxGrid('addrow', null, event);
@@ -90,7 +93,9 @@ function geraGrid(div) {
                           $("#new_register_window input[type='text']").val('');
                           $(div).jqxGrid('updatebounddata');
                       },
-                      error: function(e){
+                      error: function(xhr, status, error){
+                    	  var data = JSON.parse(xhr.responseText);
+  					      mostrar_errors($this, data);
                       }
                     });
                     return false;                   
@@ -177,7 +182,7 @@ function geraGrid(div) {
         ]
     });
     
-    $(".combo").jqxComboBox({ theme: theme });
+    //$(".combo").jqxComboBox({ theme: theme });
     
 }
 
@@ -225,23 +230,24 @@ function editar_registro(dataRecord) {
     $('.btn_fechar').click(function () {
         $('#new_register_window').jqxWindow('close');
     });
-    $("#new_register").unbind("submit");
-    $('#new_register').submit(function() {
+    $("#new_user").unbind("submit");
+    $('#new_user').submit(function() {
         $.ajax({
           type: "PATCH",
           url: "/users/"+dataRecord.id,
-          data: $('#new_register').serialize(),
+          data: $('#new_user').serialize(),
           success: function(event, request, settings ) {
-              return false;
+        	  $("#new_register_window").jqxWindow('hide');
+              $(grid).jqxGrid('updatebounddata');
+              $("#new_register_window input[type='text']").val('');
           },
-          error: function(e){
-              return false;
+          error: function(xhr, status, error){
+        	  var data = JSON.parse(xhr.responseText);
+              mostrar_errors($('#new_empresa'), data);
           }
         });
        
-       $("#new_register_window").jqxWindow('hide');
-       $(grid).jqxGrid('updatebounddata');
-       $("#new_register_window input[type='text']").val('');
+       
        return false;                   
     });
 }

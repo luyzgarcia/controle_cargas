@@ -14,11 +14,15 @@ pt-BR:
               too_short: "A senha é muito curta"
             password_confirmation:
               blank: "Você não confirmou sua senha"
-            first_name:
-              blank: "Preencha o primeiro nome"
+            nome:
+              blank: "Preencha o nome"
             last_name:
               blank: "Preencha o ultimo nome"
         empresa:
           attributes:
             nome:
               blank: "Nome da empresa deve ser preenchido"
+        fornecedor:
+           attributes:
+            nome:
+              blank: "Nome do fornecedor deve ser preenchido"
