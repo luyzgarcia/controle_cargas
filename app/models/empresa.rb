@@ -1,5 +1,5 @@
 class Empresa < ActiveRecord::Base
-  has_many :usuarios, :class_name => "User"
+  has_many :usuarios, :class_name => "User", :foreign_key => :empresa_id
   has_one  :supervisor, :class_name => "User", :foreign_key => :supervisor_id
   #has_many :user
   accepts_nested_attributes_for :supervisor
