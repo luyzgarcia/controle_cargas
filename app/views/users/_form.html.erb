@@ -43,10 +43,6 @@
 	                <%= f.label :status %>
 	                <%= f.select :status, options_for_select([['Ativo'],['Inativo']], selected: @user.status), {}, :class =>" form-control combo" %>
 	            </div>
-	            <div class="form-groud">
-	            	<%= f.label :role %><br />
-				    <%= f.select :role, options_for_select(User::ROLES), {}, :class =>"combo form-control" %>
-	            </div>
 			  </div>
 			  <div class="box-footer">
 			  	<%= f.submit 'Salvar', :class => "btn btn-primary" %>

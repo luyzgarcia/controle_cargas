@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   
   validates :nome,:email,  presence: true 
   
+  before_create :set_empresa
+  
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r)}.sum
   end
@@ -43,6 +45,7 @@ class User < ActiveRecord::Base
       else
         self.empresa = User.current_user.empresa
       end
+      self.role = 'usuario'
     end
   end
   
