@@ -34,6 +34,28 @@ class User < ActiveRecord::Base
   def self.current_user=(user)
     Thread.current[:user] = user
   end
+
+
+  def set_empresa
+    if (User.current_user.role != 'admin')
+      if !User.current_user.supervisor.nil?
+        self.empresa = User.current_user.supervisor
+      else
+        self.empresa = User.current_user.empresa
+      end
+    end
+  end
   
+  def self.filtrados
+    id = 0;
+    if (User.current_user.role != 'admin')
+      if !User.current_user.supervisor.nil?
+        id = User.current_user.supervisor
+      else
+        id = User.current_user.empresa
+      end
+    end
+    where(["empresa_id = ? or supervisor_id = ?", id, id])
+  end
   
 end

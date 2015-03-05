@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   def index
     set_listagem
-    @users = User.all.order(created_at: :desc)
+    @users = User.all.order(created_at: :desc).filtrados
     @user = User.new
     respond_to do |format|
       format.html

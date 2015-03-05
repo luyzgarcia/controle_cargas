@@ -14,7 +14,6 @@ class Fornecedor < ActiveRecord::Base
         self.empresa = User.current_user.empresa
       end
     end
-    
   end
   
   

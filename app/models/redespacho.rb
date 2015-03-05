@@ -1,6 +1,8 @@
 class Redespacho < ActiveRecord::Base
   #obfuscate_id
   belongs_to :fornecedor
+  belongs_to :empresa
+  before_create :set_empresa
   
   def status_label
     case self[:status]
@@ -52,6 +54,16 @@ class Redespacho < ActiveRecord::Base
   def as_json(options = {})
     options[:methods] = :status_label, :tipo_redespacho_label
     super(options)
+  end
+  
+  def set_empresa
+    if (User.current_user.role != 'admin')
+      if !User.current_user.supervisor.nil?
+        self.empresa = User.current_user.supervisor
+      else
+        self.empresa = User.current_user.empresa
+      end
+    end
   end
   
   def self.default_scope
