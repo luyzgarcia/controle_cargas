@@ -106,8 +106,9 @@ ActiveRecord::Schema.define(version: 201502252114231) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "status",                 default: "Inativo"
+    t.string   "status",                 default: "Ativo"
     t.integer  "empresa_id"
+    t.integer  "supervisor_id"
     t.string   "role"
   end
 
