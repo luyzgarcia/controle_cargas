@@ -43,6 +43,7 @@ function geraEmpresas(div) {
 			{name: 'email', type: 'string'},
 			{name: 'telefone', type: 'string'},
 			{name: 'endereco', type: 'string'},
+			{name: 'responsavel'},
 			{name: 'cidade', type: 'string'},
 			{name: 'estado', type: 'string'},
 			{name: 'status', type: 'string'},
