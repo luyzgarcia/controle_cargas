@@ -8,7 +8,7 @@ class EmpresasController < ApplicationController
   def index
     @empresa = Empresa.new
     #@empresa.supervisor.build
-    @empresa.create_supervisor
+    #@empresa.create_supervisor
     respond_to do |format|
       format.html
       format.json{render :json => @empresas.to_json(:include => :supervisor)}
