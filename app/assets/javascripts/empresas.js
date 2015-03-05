@@ -96,9 +96,9 @@ function geraEmpresas(div) {
 					  url: "/empresas",
 					  data: $('#new_empresa').serialize(),
 					  success: function(event, request, settings ) {
-					  	$(div).jqxGrid('addrow', null, event	);
 						$("#nova_empresa_window").jqxWindow('hide');
 						$("#nova_empresa_window input[type='text']").val('');
+                        $(div).jqxGrid('updatebounddata');
 					  },
 					  error: function(xhr, status, error) {
 					    var data = JSON.parse(xhr.responseText);

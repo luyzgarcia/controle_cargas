@@ -68,7 +68,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <%= link_to 'Meus dados', edit_user_registration_path, :class => 'btn btn-default btn-flat' %>
+                                        <%= link_to 'Meus dados', edit_user_path(current_user), :class => 'btn btn-default btn-flat' %>
                                     </div>
                                     <div class="pull-right">
                                         <%= link_to 'Sair', destroy_user_session_path, :method => :delete, :class => 'btn btn-default btn-flat' %>

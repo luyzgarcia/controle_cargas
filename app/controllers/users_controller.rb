@@ -42,11 +42,17 @@ class UsersController < ApplicationController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
+    #logger.debug 'request tipo:'
+    #logger.debug 
+    #return false
     
     if(@user.update(user_params))
       respond_to do |format|
-        format.html {redirect_to users_path, notice: 'Usuário atualizado com sucesso!'}
-        return render json: { success: true}
+        if (request.format == 'text/html')
+          format.html {redirect_to root_path, notice: 'Usuário atualizado com sucesso!'}
+        else
+          return render json: { success: true}
+        end
       end
     else
       respond_to do |format|

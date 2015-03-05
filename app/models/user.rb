@@ -46,7 +46,10 @@ class User < ActiveRecord::Base
         self.empresa = User.current_user.empresa
       end
       self.role = 'usuario'
+    else
+      self.empresa_id = 0
     end
+    
   end
   
   def self.filtrados
@@ -57,6 +60,7 @@ class User < ActiveRecord::Base
       else
         id = User.current_user.empresa
       end
+    else
     end
     where(["empresa_id = ? or supervisor_id = ?", id, id])
   end

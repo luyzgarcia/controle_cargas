@@ -1,1 +1,16 @@
-<%= render 'form' %>
+
+<section class="content-header">
+	<h1>Editar dados</h1>
+	<ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><%= link_to users_path do %><i class="fa fa-users"></i> Usuarios<% end %></li>
+        <li class="active fa fa-user">Novo</li>
+    </ol>  
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-md-6">
+			<%= render 'form' %>
+		</div>
+	</div>
+</section>
