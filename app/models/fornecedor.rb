@@ -18,16 +18,16 @@ class Fornecedor < ActiveRecord::Base
   end
   
   
-  #def self.default_scope
-  #  id = 0;
-  #  if (User.current_user.role != 'admin')
-  #    if !User.current_user.supervisor.nil?
-  #      id = User.current_user.supervisor
-  #    else
-  #      id = User.current_user.empresa
-  #    end
-  #  end
-  #  where(["empresa_id = ?", id])
-  #end
+  def self.default_scope
+    id = 0;
+    if (User.current_user.role != 'admin')
+      if !User.current_user.supervisor.nil?
+        id = User.current_user.supervisor
+      else
+        id = User.current_user.empresa
+      end
+    end
+    where(["empresa_id = ?", id])
+  end
   
 end
