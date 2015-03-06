@@ -86,6 +86,11 @@ class RelatoriosController < ApplicationController
     end
   end
   
+  def relatorios_geral
+    
+  end
+  
+  
   private 
   
   def filtrar
@@ -160,12 +165,13 @@ class RelatoriosController < ApplicationController
           
           if !parametros[:data_envio][:fr].blank?
             from = parametros[:data_envio][:fr]
-            filter << ["data_envio >= '#{from}'"]
+            filter << ["data_envio >= (to_date('#{from}', 'DD/MM/YYYY'))"]
+            # (data_envio >= (to_date('28-11-2014', 'DD/MM/YYYY')) AND data_envio <= (to_date('06-03-2015', 'DD/MM/YYYY'))) 
           end
           to = Time.new
           if !parametros[:data_envio][:to].blank?
             to = parametros[:data_envio][:to]
-            filter << ["data_envio <= '#{to}'"]
+            filter << ["data_envio <=  (to_date('#{to}', 'DD/MM/YYYY'))"]
           end
           
         end
@@ -174,12 +180,12 @@ class RelatoriosController < ApplicationController
           from = Time.new
           if !parametros[:data_entrega][:fr].blank?
             from = parametros[:data_entrega][:fr]
-            filter << ["data_entrega >= '#{from}'"]
+            filter << ["data_entrega >=  (to_date('#{from}', 'DD/MM/YYYY'))"]
           end
           to = Time.new
           if !parametros[:data_entrega][:to].blank?
             to = parametros[:data_entregao][:to]
-            filter << ["data_entrega <= '#{to}'"]
+            filter << ["data_entrega <=  (to_date('#{to}', 'DD/MM/YYYY'))"]
           end
           
         end
@@ -190,5 +196,12 @@ class RelatoriosController < ApplicationController
     @registros = Redespacho.where(filter.join(" AND ")).order('created_at DESC')
     
   end
+  
+  
+  
+  
+  
+  
+  
   
 end
